@@ -1,14 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/")({ component: Home });
+import { AboutSection } from "@/components/about-section";
+import { ContactSection } from "@/components/contact-section";
+import { Footer } from "@/components/footer";
+import { HeroSection } from "@/components/hero-section";
+import { Navbar } from "@/components/navbar";
+import { ServicesSection } from "@/components/services-section";
+import { WorksSection } from "@/components/works-section";
+import { SITE_NAME } from "@/config/site";
 
-function Home() {
+export const Route = createFileRoute("/")({
+	head: () => ({
+		meta: [
+			{ title: `${SITE_NAME} — Video Editor & Filmmaker` },
+			{
+				name: "description",
+				content:
+					"Filmmaker and video editor. Commercials, music videos, and documentaries with cinematic photography direction and signature color grading.",
+			},
+			{
+				property: "og:title",
+				content: `${SITE_NAME} — Video Editor & Filmmaker`,
+			},
+			{
+				property: "og:description",
+				content:
+					"Portfolio of films, commercials, and music videos. Editing, color grading, and direction with a cinematic aesthetic.",
+			},
+			{ property: "og:type", content: "website" },
+			{ name: "twitter:card", content: "summary_large_image" },
+		],
+	}),
+	component: Index,
+});
+
+function Index() {
 	return (
-		<div className="p-8">
-			<h1 className="text-4xl font-bold">Welcome to TanStack Start</h1>
-			<p className="mt-4 text-lg">
-				Edit <code>src/routes/index.tsx</code> to get started.
-			</p>
+		<div className="min-h-screen bg-background">
+			<Navbar />
+			<main id="top">
+				<HeroSection />
+				<WorksSection />
+				<ServicesSection />
+				<AboutSection />
+				<ContactSection />
+			</main>
+			<Footer />
 		</div>
 	);
 }
