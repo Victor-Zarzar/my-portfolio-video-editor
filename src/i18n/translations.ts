@@ -10,7 +10,7 @@ export const localeLabels: Record<Locale, string> = {
 export const translations = {
 	"pt-BR": {
 		meta: {
-			title: "Vitor Rocha — Video Editor & Filmmaker",
+			title: "Victor Zarzar — Video Editor & Filmmaker",
 			description:
 				"Filmmaker e video editor. Comerciais, clipes e documentários com direção de fotografia cinematográfica e color grading autoral.",
 			ogDescription:
@@ -23,7 +23,7 @@ export const translations = {
 			contact: "Contato",
 		},
 		hero: {
-			eyebrow: "Video editor · Filmmaker · São Paulo",
+			eyebrow: "Video editor · Filmmaker · Novo Hamburgo",
 			title1: "Histórias",
 			title2: "em 24 quadros",
 			title3: "por segundo.",
@@ -76,12 +76,12 @@ export const translations = {
 			title1: "Vamos colocar sua ideia ",
 			titleAccent: "na tela",
 		},
-		footer: { rights: "© 2026 Vitor Rocha" },
+		footer: { rights: "© 2026 Victor Zarzar" },
 		heroAlt: "Frame cinematográfico de uma silhueta contra luz dourada",
 	},
 	"en-US": {
 		meta: {
-			title: "Vitor Rocha — Video Editor & Filmmaker",
+			title: "Victor Zarzar — Video Editor & Filmmaker",
 			description:
 				"Filmmaker and video editor. Commercials, music videos and documentaries with cinematic photography and signature color grading.",
 			ogDescription:
@@ -94,7 +94,7 @@ export const translations = {
 			contact: "Contact",
 		},
 		hero: {
-			eyebrow: "Video editor · Filmmaker · São Paulo",
+			eyebrow: "Video editor · Filmmaker · Novo Hamburgo",
 			title1: "Stories",
 			title2: "at 24 frames",
 			title3: "per second.",
@@ -152,7 +152,7 @@ export const translations = {
 	},
 	"es-ES": {
 		meta: {
-			title: "Vitor Rocha — Editor de Vídeo & Cineasta",
+			title: "Victor Zarzar — Editor de Vídeo & Cineasta",
 			description:
 				"Cineasta y editor de vídeo. Comerciales, videoclips y documentales con fotografía cinematográfica y color grading de autor.",
 			ogDescription:
@@ -165,7 +165,7 @@ export const translations = {
 			contact: "Contacto",
 		},
 		hero: {
-			eyebrow: "Editor de vídeo · Cineasta · São Paulo",
+			eyebrow: "Editor de vídeo · Cineasta · Novo Hamburgo",
 			title1: "Historias",
 			title2: "a 24 cuadros",
 			title3: "por segundo.",

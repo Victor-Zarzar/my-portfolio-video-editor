@@ -3,7 +3,7 @@ import {
 	InstagramIcon,
 	VimeoIcon,
 	YoutubeIcon,
-} from "@/components/social-icons";
+} from "#/shared/layout/social-icons.tsx";
 import { SITE_NAME, SOCIAL_LINKS } from "@/config/site";
 import { useI18n } from "@/i18n";
 
@@ -74,9 +74,9 @@ export function Footer() {
 			<div className="border-t border-border/60">
 				<div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-6 text-xs tracking-[0.16em] uppercase text-muted-foreground sm:flex-row">
 					<span>
-						© {year} {SITE_NAME}. All rights reserved.
+						© {year} {SITE_NAME}.
 					</span>
-					<span>Built with care.</span>
+					<span>All rights reserved.</span>
 				</div>
 			</div>
 		</footer>

@@ -51,6 +51,37 @@
 
 :root {
   --radius: 0.25rem;
+  /* Ivory & Gold (light) */
+  --background: oklch(0.97 0.006 90);
+  --foreground: oklch(0.2 0.005 90);
+  --card: oklch(0.99 0.004 90);
+  --card-foreground: oklch(0.2 0.005 90);
+  --popover: oklch(0.99 0.004 90);
+  --popover-foreground: oklch(0.2 0.005 90);
+  --primary: oklch(0.62 0.098 88);
+  --primary-foreground: oklch(0.98 0.004 90);
+  --secondary: oklch(0.93 0.008 90);
+  --secondary-foreground: oklch(0.2 0.005 90);
+  --muted: oklch(0.93 0.008 90);
+  --muted-foreground: oklch(0.45 0.012 90);
+  --accent: oklch(0.88 0.083 92);
+  --accent-foreground: oklch(0.2 0.005 90);
+  --destructive: oklch(0.58 0.21 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.86 0.01 90);
+  --input: oklch(0.86 0.01 90);
+  --ring: oklch(0.62 0.098 88);
+  --gold: oklch(0.62 0.098 88);
+  --gold-light: oklch(0.75 0.108 90.5);
+
+  --gradient-gold: linear-gradient(100deg, var(--gold) 0%, var(--gold-light) 55%, var(--gold) 100%);
+  --shadow-frame: 0 24px 60px -30px oklch(0 0 0 / 0.35);
+  --glow-gold: 0 0 48px -12px color-mix(in oklab, var(--gold) 45%, transparent);
+}
+
+.dark {
+  --radius: 0.25rem;
+
   /* Noir & Gold */
   --background: oklch(0.16 0 0); /* #0d0d0d */
   --foreground: oklch(0.95 0.005 90);

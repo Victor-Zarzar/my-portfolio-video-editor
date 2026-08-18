@@ -10,7 +10,7 @@ import {
 } from "@tanstack/react-router";
 import { type ReactNode, useEffect } from "react";
 import { reportAppError } from "#/lib/error-reporting";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "#/shared/common/theme-provider.tsx";
 import { I18nProvider } from "../i18n";
 import appCss from "../styles.css?url";
 

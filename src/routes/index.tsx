@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { AboutSection } from "@/components/about-section";
-import { ContactSection } from "@/components/contact-section";
-import { Footer } from "@/components/footer";
-import { HeroSection } from "@/components/hero-section";
-import { Navbar } from "@/components/navbar";
-import { ServicesSection } from "@/components/services-section";
-import { WorksSection } from "@/components/works-section";
+import { AboutSection } from "#/shared/layout/about-section";
+import { ContactSection } from "#/shared/layout/contact-section";
+import { Footer } from "#/shared/layout/footer";
+import { HeroSection } from "#/shared/layout/hero-section";
+import { Navbar } from "#/shared/layout/nav-desktop.tsx";
+import { NavMobile } from "#/shared/layout/nav-mobile.tsx";
+import { ServicesSection } from "#/shared/layout/services-section";
+import { WorksSection } from "#/shared/layout/works-section";
 import { SITE_NAME } from "@/config/site";
 
 export const Route = createFileRoute("/")({

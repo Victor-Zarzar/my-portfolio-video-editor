@@ -1,7 +1,13 @@
 {
   "name": "my-portfolio-video-editor",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "author": "victorzarzar (https://github.com/Victor-Zarzar)",
+  "repository": "https://github.com/Victor-Zarzar/my-portfolio-video-editor",
+  "bugs": {
+    "url": "https://github.com/Victor-Zarzar/my-portfolio-video-editor/issues"
+  },
   "imports": {
     "#/*": "./src/*"
   },
@@ -10,12 +16,14 @@
     "generate-routes": "tsr generate",
     "build": "vite build",
     "preview": "vite preview",
+    "check": "bun typecheck && bun lint && bun typegen",
     "lint": "biome check .",
     "lint:fix": "biome check . --write",
     "format": "biome format . --write",
     "typegen": "next typegen",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf node_modules .netlify .tanstack tsconfig.tsbuildinfo playwright-report test-results",
+    "deploy": "bun netlify deploy",
+    "clean": "rm -rf node_modules .netlify .tanstack dist tsconfig.tsbuildinfo playwright-report test-results",
     "update-deps": "bun update",
     "update-latest": "bun update --latest"
   },
