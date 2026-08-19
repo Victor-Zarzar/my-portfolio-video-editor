@@ -5,7 +5,6 @@ import { ContactSection } from "#/shared/layout/contact-section";
 import { Footer } from "#/shared/layout/footer";
 import { HeroSection } from "#/shared/layout/hero-section";
 import { Navbar } from "#/shared/layout/nav-desktop.tsx";
-import { NavMobile } from "#/shared/layout/nav-mobile.tsx";
 import { ServicesSection } from "#/shared/layout/services-section";
 import { WorksSection } from "#/shared/layout/works-section";
 import { SITE_NAME } from "@/config/site";

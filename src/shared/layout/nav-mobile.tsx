@@ -19,15 +19,17 @@ export function NavMobile() {
 
 	return (
 		<Sheet open={open} onOpenChange={setOpen}>
-			<SheetTrigger asChild>
-				<Button
-					variant="outline"
-					size="icon"
-					aria-label="Menu"
-					className="h-9 w-9 rounded-none border-gold/40 text-gold hover:bg-gold hover:text-primary-foreground sm:hidden"
-				>
-					<Menu className="h-[1.1rem] w-[1.1rem]" />
-				</Button>
+			<SheetTrigger
+				render={
+					<Button
+						variant="outline"
+						size="icon"
+						aria-label="Menu"
+						className="h-9 w-9 rounded-none border-gold/40 text-gold hover:bg-gold hover:text-primary-foreground sm:hidden"
+					/>
+				}
+			>
+				<Menu className="h-[1.1rem] w-[1.1rem]" />
 			</SheetTrigger>
 			<SheetContent
 				side="right"
@@ -38,7 +40,6 @@ export function NavMobile() {
 					<span className="text-gold">.</span>
 					{SITE_LAST_NAME}
 				</span>
-
 				<nav className="mt-10 flex flex-col gap-6">
 					{links.map((link) => (
 						<a
@@ -51,15 +52,13 @@ export function NavMobile() {
 						</a>
 					))}
 				</nav>
-
 				<a
-					href="#contato"
+					href="#contact"
 					onClick={() => setOpen(false)}
 					className="mt-10 inline-block border border-gold/60 px-4 py-2 text-[0.65rem] font-semibold tracking-[0.22em] uppercase text-gold transition-colors hover:bg-gold hover:text-primary-foreground"
 				>
 					{t.nav.contact}
 				</a>
-
 				<div className="mt-10 flex items-center justify-between gap-4 hairline pt-6">
 					<LanguageSwitcher />
 					<ModeToggle />
