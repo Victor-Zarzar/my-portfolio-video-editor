@@ -8,7 +8,7 @@ export function HeroSection() {
 		<section className="relative grain-overlay flex min-h-screen items-end overflow-hidden">
 			<img
 				src={heroImg}
-				alt={t.heroAlt}
+				alt={t.hero.alt}
 				width={1920}
 				height={1088}
 				className="absolute inset-0 h-full w-full object-cover opacity-70"

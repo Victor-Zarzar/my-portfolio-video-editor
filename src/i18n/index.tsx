@@ -33,7 +33,7 @@ function isLocale(value: string | null | undefined): value is Locale {
 
 function readCookie(): string | null {
 	const match = document.cookie.match(/(?:^|;\s*)locale=([^;]*)/);
-	return match ? decodeURIComponent(match[1]!) : null;
+	return match ? decodeURIComponent(match[1]) : null;
 }
 
 function writeCookie(value: Locale) {

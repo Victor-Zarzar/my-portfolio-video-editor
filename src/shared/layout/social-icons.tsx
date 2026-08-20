@@ -1,8 +1,5 @@
 import type { SVGProps } from "react";
 
-// Lightweight monoline icons, kept local so we don't pull in a full brand-icon
-// package just for four glyphs — also avoids trademark-icon-set churn.
-
 export function InstagramIcon(props: SVGProps<SVGSVGElement>) {
 	return (
 		<svg
