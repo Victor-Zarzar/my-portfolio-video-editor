@@ -20,7 +20,7 @@
     "lint": "biome check .",
     "lint:fix": "biome check . --write",
     "format": "biome format . --write",
-    "typegen": "next typegen",
+    "typegen": "tsr generate",
     "typecheck": "tsc --noEmit",
     "test:unit": "bun test tests/units --isolate",
     "deploy": "bun netlify deploy",
