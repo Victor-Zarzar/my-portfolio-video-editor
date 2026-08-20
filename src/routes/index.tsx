@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SITE_NAME } from "#/config/site-config";
+import { SITE_NAME } from "#/config/app-config";
 import { AboutSection } from "#/shared/layout/about-section";
 import { ContactSection } from "#/shared/layout/contact-section";
 import { Footer } from "#/shared/layout/footer";

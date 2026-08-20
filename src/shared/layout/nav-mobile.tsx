@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import { SITE_FIRST_NAME, SITE_LAST_NAME } from "#/config/site-config";
+import { SITE_FIRST_NAME, SITE_LAST_NAME } from "#/config/app-config";
 import { useI18n } from "@/i18n";
 import { LanguageSwitcher } from "@/shared/common/language-switcher";
 import { ModeToggle } from "@/shared/common/mode-toggle";

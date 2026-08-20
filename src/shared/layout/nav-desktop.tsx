@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { SITE_FIRST_NAME, SITE_LAST_NAME } from "#/config/site-config";
+import { SITE_FIRST_NAME, SITE_LAST_NAME } from "#/config/app-config";
 import { LanguageSwitcher } from "#/shared/common/language-switcher.tsx";
 import { useI18n } from "@/i18n";
 import { ModeToggle } from "../common/mode-toggle";

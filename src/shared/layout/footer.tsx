@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { SITE_NAME, SOCIAL_LINKS } from "#/config/site-config";
+import { SITE_NAME, SOCIAL_LINKS } from "#/config/app-config";
 import {
 	FacebookIcon,
 	InstagramIcon,

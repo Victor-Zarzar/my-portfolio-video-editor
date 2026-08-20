@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "LICENSE"
+      - ".editorconfig"
+      - ".vscode/**"
+      - ".cursor/**"
+      - ".github/**"
+      - "!.github/workflows/**"
+      - "content/**"
+      - "public/**"
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "LICENSE"
+      - ".editorconfig"
+      - ".vscode/**"
+      - ".cursor/**"
+      - ".github/**"
+      - "!.github/workflows/**"
+      - "content/**"
+      - "public/**"
+
+jobs:
+  lint:
+    name: Bun CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Setup project
+        uses: ./.github/actions/setup-project
+
+      - name: Typegen
+        run: bun run typegen
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Tests
+        run: bun run test:unit
+
+      - name: Build
+        run: bun run build

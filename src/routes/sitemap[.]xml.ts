@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { SITE_URL } from "@/config/site-config";
+import { SITE_URL } from "#/config/app-config";
 import { routeTree } from "@/routeTree.gen";
 
 const ROUTE_BLACKLIST = new Set<string>([
