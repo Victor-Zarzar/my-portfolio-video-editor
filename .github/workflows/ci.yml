@@ -30,6 +30,8 @@ jobs:
   lint:
     name: Bun CI
     runs-on: ubuntu-latest
+    env:
+      VITE_APP_URL: https://localhost:3000
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
