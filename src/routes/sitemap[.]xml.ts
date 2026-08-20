@@ -1,5 +1,5 @@
+import type { AnyRoute } from "@tanstack/react-router";
 import { createFileRoute } from "@tanstack/react-router";
-
 import { SITE_URL } from "#/config/app-config";
 import { routeTree } from "@/routeTree.gen";
 
@@ -40,10 +40,10 @@ ${urls
 	},
 });
 
-function getRoutePaths(node: any, acc: string[] = []): string[] {
+function getRoutePaths(node: AnyRoute, acc: string[] = []): string[] {
 	if (node?.fullPath) acc.push(node.fullPath);
 	for (const child of Object.values(node?.children ?? {})) {
-		getRoutePaths(child, acc);
+		getRoutePaths(child as AnyRoute, acc);
 	}
 	return acc;
 }

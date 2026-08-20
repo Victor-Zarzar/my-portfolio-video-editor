@@ -37,6 +37,7 @@ function readCookie(): string | null {
 }
 
 function writeCookie(value: Locale) {
+	// biome-ignore lint/suspicious/noDocumentCookie: sync write needed for locale cookie; Cookie Store API is async and unsupported in Safari/Firefox
 	document.cookie = `${COOKIE_NAME}=${encodeURIComponent(value)}; path=/; max-age=${COOKIE_MAX_AGE}; samesite=lax`;
 }
 
