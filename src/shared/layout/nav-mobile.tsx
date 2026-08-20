@@ -1,6 +1,7 @@
+import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import { SITE_FIRST_NAME, SITE_LAST_NAME } from "@/config/site";
+import { SITE_FIRST_NAME, SITE_LAST_NAME } from "#/config/site-config";
 import { useI18n } from "@/i18n";
 import { LanguageSwitcher } from "@/shared/common/language-switcher";
 import { ModeToggle } from "@/shared/common/mode-toggle";
@@ -52,13 +53,15 @@ export function NavMobile() {
 						</a>
 					))}
 				</nav>
-				<a
-					href="#contact"
+				<Link
+					to="."
+					hash="contact"
 					onClick={() => setOpen(false)}
 					className="mt-10 inline-block border border-gold/60 px-4 py-2 text-[0.65rem] font-semibold tracking-[0.22em] uppercase text-gold transition-colors hover:bg-gold hover:text-primary-foreground"
 				>
 					{t.nav.contact}
-				</a>
+				</Link>
+
 				<div className="mt-10 flex items-center justify-between gap-4 hairline pt-6">
 					<LanguageSwitcher />
 					<ModeToggle />

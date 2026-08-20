@@ -1,4 +1,4 @@
-import { SITE_EMAIL } from "@/config/site";
+import { SITE_EMAIL } from "#/config/site-config";
 import { useI18n } from "@/i18n";
 
 export function ContactSection() {

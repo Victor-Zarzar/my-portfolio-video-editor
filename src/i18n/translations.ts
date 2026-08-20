@@ -9,6 +9,17 @@ export const localeLabels: Record<Locale, string> = {
 
 export const translations = {
 	"pt-BR": {
+		seo: {
+			title: "Victor Zarzar — Filmmaker & Editor de Vídeo",
+			description:
+				"Portfólio de Victor Zarzar: produção e edição de vídeo, direção e finalização para marcas e projetos autorais.",
+			keywords: [
+				"Victor Zarzar",
+				"editor de vídeo",
+				"filmmaker",
+				"produção audiovisual",
+			],
+		},
 		meta: {
 			title: "Victor Zarzar — Video Editor & Filmmaker",
 			description:
@@ -64,7 +75,7 @@ export const translations = {
 			eyebrow: "Sobre",
 			title1: "Luz, sombra e ",
 			titleAccent: "tempo",
-			p1: "Sou o Vitor, filmmaker e editor há doze anos. Trabalho com um método simples: entender a história antes de ligar a câmera e proteger esse fio na ilha de edição, quadro a quadro.",
+			p1: "Sou o Victor Zarzar, filmmaker e editor há doze anos. Trabalho com um método simples: entender a história antes de ligar a câmera e proteger esse fio na ilha de edição, quadro a quadro.",
 			p2: "Já assinei campanhas para marcas de moda, clipes independentes e documentários exibidos em festivais nacionais.",
 			years: "Anos",
 			projects: "Projetos",
@@ -76,10 +87,36 @@ export const translations = {
 			title1: "Vamos colocar sua ideia ",
 			titleAccent: "na tela",
 		},
-		footer: { rights: "© 2026 Victor Zarzar" },
-		heroAlt: "Frame cinematográfico de uma silhueta contra luz dourada",
+		footer: {
+			tagline:
+				"Video editor e filmmaker construindo histórias quadro a quadro.",
+			rightsReserved: "Todos os direitos reservados.",
+		},
+		notFound: {
+			title: "404",
+			heading: "Página não encontrada",
+			text: "A página que você procura não existe ou foi movida.",
+			cta: "Voltar ao início",
+		},
+		error: {
+			heading: "Esta página não carregou",
+			text: "Algo deu errado do nosso lado. Você pode tentar novamente ou voltar ao início.",
+			retry: "Tentar novamente",
+			home: "Voltar ao início",
+		},
 	},
 	"en-US": {
+		seo: {
+			title: "Victor Zarzar — Filmmaker & Video Editor",
+			description:
+				"Victor Zarzar's portfolio: video production and editing, direction and post-production for brands and personal projects.",
+			keywords: [
+				"Victor Zarzar",
+				"video editor",
+				"filmmaker",
+				"video production",
+			],
+		},
 		meta: {
 			title: "Victor Zarzar — Video Editor & Filmmaker",
 			description:
@@ -135,7 +172,7 @@ export const translations = {
 			eyebrow: "About",
 			title1: "Light, shadow and ",
 			titleAccent: "time",
-			p1: "I'm Vitor, a filmmaker and editor for twelve years. My method is simple: understand the story before the camera rolls, and protect that thread in the edit, frame by frame.",
+			p1: "I'm Victor Zarzar, a filmmaker and editor for twelve years. My method is simple: understand the story before the camera rolls, and protect that thread in the edit, frame by frame.",
 			p2: "I've directed campaigns for fashion brands, independent music videos and documentaries screened at national festivals.",
 			years: "Years",
 			projects: "Projects",
@@ -147,10 +184,35 @@ export const translations = {
 			title1: "Let's put your idea ",
 			titleAccent: "on screen",
 		},
-		footer: { rights: "© 2026 Vitor Rocha" },
-		heroAlt: "Cinematic frame of a silhouette against golden light",
+		footer: {
+			tagline: "Video editor & filmmaker crafting stories frame by frame.",
+			rightsReserved: "All rights reserved.",
+		},
+		notFound: {
+			title: "404",
+			heading: "Page not found",
+			text: "The page you're looking for doesn't exist or has been moved.",
+			cta: "Go home",
+		},
+		error: {
+			heading: "This page didn't load",
+			text: "Something went wrong on our end. You can try refreshing or head back home.",
+			retry: "Try again",
+			home: "Go home",
+		},
 	},
 	"es-ES": {
+		seo: {
+			title: "Victor Zarzar — Filmmaker y Editor de Vídeo",
+			description:
+				"Portafolio de Victor Zarzar: producción y edición de vídeo, dirección y postproducción para marcas y proyectos propios.",
+			keywords: [
+				"Victor Zarzar",
+				"editor de vídeo",
+				"filmmaker",
+				"producción audiovisual",
+			],
+		},
 		meta: {
 			title: "Victor Zarzar — Editor de Vídeo & Cineasta",
 			description:
@@ -206,7 +268,7 @@ export const translations = {
 			eyebrow: "Sobre mí",
 			title1: "Luz, sombra y ",
 			titleAccent: "tiempo",
-			p1: "Soy Vitor, cineasta y editor desde hace doce años. Mi método es simple: entender la historia antes de encender la cámara y proteger ese hilo en la sala de edición, cuadro a cuadro.",
+			p1: "Soy Victor Zarzar, cineasta y editor desde hace doce años. Mi método es simple: entender la historia antes de encender la cámara y proteger ese hilo en la sala de edición, cuadro a cuadro.",
 			p2: "He firmado campañas para marcas de moda, videoclips independientes y documentales exhibidos en festivales nacionales.",
 			years: "Años",
 			projects: "Proyectos",
@@ -218,8 +280,23 @@ export const translations = {
 			title1: "Pongamos tu idea ",
 			titleAccent: "en pantalla",
 		},
-		footer: { rights: "© 2026 Vitor Rocha" },
-		heroAlt: "Fotograma cinematográfico de una silueta a contraluz dorada",
+		footer: {
+			tagline:
+				"Editor de vídeo y cineasta construyendo historias fotograma a fotograma.",
+			rightsReserved: "Todos los derechos reservados.",
+		},
+		notFound: {
+			title: "404",
+			heading: "Página no encontrada",
+			text: "La página que buscas no existe o ha sido movida.",
+			cta: "Volver al inicio",
+		},
+		error: {
+			heading: "Esta página no cargó",
+			text: "Algo salió mal de nuestro lado. Puedes intentar de nuevo o volver al inicio.",
+			retry: "Intentar de nuevo",
+			home: "Volver al inicio",
+		},
 	},
 } as const;
 

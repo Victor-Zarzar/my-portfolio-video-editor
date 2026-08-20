@@ -3,11 +3,25 @@ import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
+import { z } from "zod";
 
-const config = defineConfig({
-	resolve: { tsconfigPaths: true },
-	plugins: [devtools(), netlify(), tailwindcss(), tanstackStart(), viteReact()],
+const envSchema = z.object({
+	VITE_APP_URL: z.string().url(),
 });
 
-export default config;
+export default defineConfig(({ mode }) => {
+	const env = loadEnv(mode, process.cwd(), "");
+	envSchema.parse(env);
+
+	return {
+		resolve: { tsconfigPaths: true },
+		plugins: [
+			devtools(),
+			netlify(),
+			tailwindcss(),
+			tanstackStart(),
+			viteReact(),
+		],
+	};
+});

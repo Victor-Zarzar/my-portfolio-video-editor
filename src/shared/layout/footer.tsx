@@ -1,10 +1,11 @@
+import { Link } from "@tanstack/react-router";
+import { SITE_NAME, SOCIAL_LINKS } from "#/config/site-config";
 import {
 	FacebookIcon,
 	InstagramIcon,
 	VimeoIcon,
 	YoutubeIcon,
 } from "#/shared/layout/social-icons.tsx";
-import { SITE_NAME, SOCIAL_LINKS } from "@/config/site";
 import { useI18n } from "@/i18n";
 
 const socialItems = [
@@ -23,20 +24,22 @@ export function Footer() {
 		{ label: t.nav.services, href: "#services" },
 		{ label: t.nav.about, href: "#about" },
 		{ label: t.nav.contact, href: "#contact" },
+		{ label: "Sitemap", href: "/sitemap.xml" },
 	];
 
 	return (
 		<footer className="border-t border-border/60">
 			<div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3 sm:items-start">
 				<div>
-					<a
-						href="#top"
+					<Link
+						to="."
+						hash="top"
 						className="font-display text-sm font-bold tracking-[0.28em] uppercase"
 					>
 						{SITE_NAME}
-					</a>
+					</Link>
 					<p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-						Video editor & filmmaker crafting stories frame by frame.
+						{t.footer.tagline}
 					</p>
 				</div>
 
@@ -76,7 +79,7 @@ export function Footer() {
 					<span>
 						© {year} {SITE_NAME}.
 					</span>
-					<span>All rights reserved.</span>
+					<span>{t.footer.rightsReserved}</span>
 				</div>
 			</div>
 		</footer>
