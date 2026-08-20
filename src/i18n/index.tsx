@@ -33,10 +33,11 @@ function isLocale(value: string | null | undefined): value is Locale {
 
 function readCookie(): string | null {
 	const match = document.cookie.match(/(?:^|;\s*)locale=([^;]*)/);
-	return match ? decodeURIComponent(match[1]!) : null;
+	return match ? decodeURIComponent(match[1]) : null;
 }
 
 function writeCookie(value: Locale) {
+	// biome-ignore lint/suspicious/noDocumentCookie: sync write needed for locale cookie; Cookie Store API is async and unsupported in Safari/Firefox
 	document.cookie = `${COOKIE_NAME}=${encodeURIComponent(value)}; path=/; max-age=${COOKIE_MAX_AGE}; samesite=lax`;
 }
 

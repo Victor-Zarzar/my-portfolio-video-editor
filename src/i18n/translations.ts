@@ -35,6 +35,7 @@ export const translations = {
 		},
 		hero: {
 			eyebrow: "Video editor · Filmmaker · Novo Hamburgo",
+			alt: "Victor Zarzar filmando com uma câmera de cinema",
 			title1: "Histórias",
 			title2: "em 24 quadros",
 			title3: "por segundo.",
@@ -132,6 +133,7 @@ export const translations = {
 		},
 		hero: {
 			eyebrow: "Video editor · Filmmaker · Novo Hamburgo",
+			alt: "Victor Zarzar filming with a cinema camera",
 			title1: "Stories",
 			title2: "at 24 frames",
 			title3: "per second.",
@@ -228,6 +230,7 @@ export const translations = {
 		},
 		hero: {
 			eyebrow: "Editor de vídeo · Cineasta · Novo Hamburgo",
+			alt: "Victor Zarzar filmando con una cámara de cine",
 			title1: "Historias",
 			title2: "a 24 cuadros",
 			title3: "por segundo.",
