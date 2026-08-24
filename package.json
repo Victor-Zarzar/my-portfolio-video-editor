@@ -23,7 +23,9 @@
     "typegen": "tsr generate",
     "typecheck": "tsc --noEmit",
     "test:unit": "bun test tests/units --isolate",
-    "deploy": "bun netlify deploy",
+    "install:netlifycli": "npm install -g netlify-cli",
+    "deploy:dev": "netlify deploy",
+    "deploy:prod": "netlify deploy --prod",
     "clean": "rm -rf node_modules .netlify .tanstack dist tsconfig.tsbuildinfo playwright-report test-results",
     "update-deps": "bun update",
     "update-latest": "bun update --latest"
