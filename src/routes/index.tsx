@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { motion, type Variants } from "motion/react";
 import { SITE_NAME } from "#/config/app-config";
 import { AboutSection } from "#/shared/layout/about-section";
 import { ContactSection } from "#/shared/layout/contact-section";
@@ -33,16 +34,65 @@ export const Route = createFileRoute("/")({
 	component: Index,
 });
 
+const sectionVariants: Variants = {
+	hidden: { opacity: 0, y: 28 },
+	visible: (i: number) => ({
+		opacity: 1,
+		y: 0,
+		transition: {
+			duration: 0.55,
+			delay: i * 0.12,
+			ease: [0.25, 0.46, 0.45, 0.94],
+		},
+	}),
+};
+
 function Index() {
 	return (
 		<div className="min-h-screen bg-background">
 			<Navbar />
 			<main id="top">
 				<HeroSection />
-				<WorksSection />
-				<ServicesSection />
-				<AboutSection />
-				<ContactSection />
+
+				<motion.div
+					custom={0}
+					variants={sectionVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, margin: "-60px" }}
+				>
+					<WorksSection />
+				</motion.div>
+
+				<motion.div
+					custom={1}
+					variants={sectionVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, margin: "-60px" }}
+				>
+					<ServicesSection />
+				</motion.div>
+
+				<motion.div
+					custom={2}
+					variants={sectionVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, margin: "-60px" }}
+				>
+					<AboutSection />
+				</motion.div>
+
+				<motion.div
+					custom={3}
+					variants={sectionVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, margin: "-60px" }}
+				>
+					<ContactSection />
+				</motion.div>
 			</main>
 			<Footer />
 		</div>
