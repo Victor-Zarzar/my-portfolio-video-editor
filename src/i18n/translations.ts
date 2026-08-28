@@ -32,6 +32,10 @@ export const translations = {
       services: "Serviços",
       about: "Sobre",
       contact: "Contato",
+      toggle: "Alternar tema",
+      light: "Claro",
+      dark: "Escuro",
+      system: "Sistema",
     },
     hero: {
       eyebrow: "Video editor · Filmmaker · Novo Hamburgo",
@@ -104,6 +108,7 @@ export const translations = {
       text: "Algo deu errado do nosso lado. Você pode tentar novamente ou voltar ao início.",
       retry: "Tentar novamente",
       home: "Voltar ao início",
+      sentry: "Ocorreu um erro. Nossa equipe foi notificada.",
     },
   },
   "en-US": {
@@ -130,6 +135,10 @@ export const translations = {
       services: "Services",
       about: "About",
       contact: "Contact",
+      toggle: "Toggle theme",
+      light: "Light",
+      dark: "Dark",
+      system: "System",
     },
     hero: {
       eyebrow: "Video editor · Filmmaker · Novo Hamburgo",
@@ -201,6 +210,7 @@ export const translations = {
       text: "Something went wrong on our end. You can try refreshing or head back home.",
       retry: "Try again",
       home: "Go home",
+      sentry: "An error has occurred. Our team has been notified.",
     },
   },
   "es-ES": {
@@ -227,6 +237,10 @@ export const translations = {
       services: "Servicios",
       about: "Sobre mí",
       contact: "Contacto",
+      toggle: "Alternar tema",
+      light: "Claro",
+      dark: "Oscuro",
+      system: "Sistema",
     },
     hero: {
       eyebrow: "Editor de vídeo · Cineasta · Novo Hamburgo",
@@ -299,6 +313,7 @@ export const translations = {
       text: "Algo salió mal de nuestro lado. Puedes intentar de nuevo o volver al inicio.",
       retry: "Intentar de nuevo",
       home: "Volver al inicio",
+      sentry: "Ha ocurrido un error. Nuestro equipo ha sido notificado.",
     },
   },
 } as const

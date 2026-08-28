@@ -17,7 +17,7 @@ import {
 
 const COOKIE_NAME = "locale"
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365 // 1 year
-export const DEFAULT_LOCALE: Locale = "pt-BR"
+export const DEFAULT_LOCALE: Locale = "en-US"
 
 type I18nValue = {
   locale: Locale

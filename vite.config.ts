@@ -10,7 +10,6 @@ import { z } from "zod"
 const envSchema = z.object({
   VITE_APP_URL: z.url(),
   VITE_SENTRY_DSN: z.url().optional(),
-  SENTRY_DSN: z.url().optional(),
   SENTRY_AUTH_TOKEN: z.string().optional(),
   SENTRY_ORG: z.string().optional(),
   SENTRY_PROJECT: z.string().optional(),
