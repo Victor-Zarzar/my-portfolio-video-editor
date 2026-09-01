@@ -50,9 +50,9 @@ function getRoutePaths(node: AnyRoute, acc: string[] = []): string[] {
 
 function shouldIncludeInSitemap(path: string): boolean {
   if (ROUTE_BLACKLIST.has(path)) return false
-  if (path.includes(".")) return false // sitemap.xml, robots.txt, etc
-  if (path.includes("$") || path.includes(":")) return false // dinamic routes
-  if (path.includes("_")) return false // layout routes (_layout)
+  if (path.includes(".")) return false
+  if (path.includes("$") || path.includes(":")) return false
+  if (path.includes("_")) return false
   return true
 }
 

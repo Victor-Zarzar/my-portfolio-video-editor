@@ -3,7 +3,7 @@ import { env } from "#/env"
 export const SITE_FIRST_NAME = "Victor"
 export const SITE_LAST_NAME = "Zarzar"
 export const SITE_NAME = `${SITE_FIRST_NAME} ${SITE_LAST_NAME}`
-export const SITE_EMAIL = "vzfilms8@gmail.com"
+export const SITE_EMAIL = env.VITE_SITE_EMAIL
 
 export const SOCIAL_LINKS = {
   instagram: "https://instagram.com/vzfilms8",

@@ -14,6 +14,7 @@ const envSchema = z.object({
   SENTRY_AUTH_TOKEN: z.string().optional(),
   SENTRY_ORG: z.string().optional(),
   SENTRY_PROJECT: z.string().optional(),
+  VITE_SITE_EMAIL: z.email(),
 })
 
 export default defineConfig(({ mode }) => {

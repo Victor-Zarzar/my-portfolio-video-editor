@@ -38,7 +38,7 @@ export const translations = {
       system: "Sistema",
     },
     hero: {
-      eyebrow: "Video editor · Filmmaker · Novo Hamburgo",
+      eyebrow: "Video editor · Filmmaker · Audiovisual",
       alt: "Victor Zarzar filmando com uma câmera de cinema",
       title1: "Histórias",
       title2: "em 24 quadros",
@@ -91,6 +91,30 @@ export const translations = {
       eyebrow: "Próximo projeto",
       title1: "Vamos colocar sua ideia ",
       titleAccent: "na tela",
+      subtitle:
+        "Tem um projeto em mente ou só quer dizer oi? Me manda uma mensagem.",
+      findMe: "Me encontre em",
+      form: {
+        name: "Nome",
+        namePlaceholder: "Seu nome",
+        email: "E-mail",
+        emailPlaceholder: "seu@email.com",
+        message: "Mensagem",
+        messagePlaceholder: "Conta sobre seu projeto ou só diz oi...",
+        submit: "Enviar mensagem",
+        sending: "Enviando...",
+        success: "Mensagem enviada, obrigado!",
+        error: "Algo deu errado. Tenta de novo ou manda direto pra",
+        errors: {
+          nameTooShort: "Nome muito curto",
+          emailInvalid: "E-mail inválido",
+          messageTooShort: "Conta um pouco mais",
+        },
+      },
+      responseTime: {
+        title: "Tempo de resposta",
+        text: "Costumo responder em 1–2 dias úteis. Pra assuntos urgentes, e-mail é o melhor caminho.",
+      },
     },
     footer: {
       tagline:
@@ -141,7 +165,7 @@ export const translations = {
       system: "System",
     },
     hero: {
-      eyebrow: "Video editor · Filmmaker · Novo Hamburgo",
+      eyebrow: "Video editor · Filmmaker · Audiovisual",
       alt: "Victor Zarzar filming with a cinema camera",
       title1: "Stories",
       title2: "at 24 frames",
@@ -194,6 +218,30 @@ export const translations = {
       eyebrow: "Next project",
       title1: "Let's put your idea ",
       titleAccent: "on screen",
+      subtitle:
+        "Have a project in mind or just want to say hi? Send me a message.",
+      findMe: "Find me on",
+      form: {
+        name: "Name",
+        namePlaceholder: "Your name",
+        email: "Email",
+        emailPlaceholder: "your@email.com",
+        message: "Message",
+        messagePlaceholder: "Tell me about your project or just say hi...",
+        submit: "Send Message",
+        sending: "Sending...",
+        success: "Message sent, thank you!",
+        error: "Something went wrong. Try again or reach out directly at",
+        errors: {
+          nameTooShort: "Name is too short",
+          emailInvalid: "Invalid email",
+          messageTooShort: "Tell me a bit more",
+        },
+      },
+      responseTime: {
+        title: "Response time",
+        text: "I typically respond within 1–2 business days. For urgent matters, email works best.",
+      },
     },
     footer: {
       tagline: "Video editor & filmmaker crafting stories frame by frame.",
@@ -243,7 +291,7 @@ export const translations = {
       system: "Sistema",
     },
     hero: {
-      eyebrow: "Editor de vídeo · Cineasta · Novo Hamburgo",
+      eyebrow: "Editor de vídeo · Cineasta · Audiovisual",
       alt: "Victor Zarzar filmando con una cámara de cine",
       title1: "Historias",
       title2: "a 24 cuadros",
@@ -296,6 +344,30 @@ export const translations = {
       eyebrow: "Próximo proyecto",
       title1: "Pongamos tu idea ",
       titleAccent: "en pantalla",
+      subtitle:
+        "¿Tienes un proyecto en mente o solo quieres saludar? Mándame un mensaje.",
+      findMe: "Encuéntrame en",
+      form: {
+        name: "Nombre",
+        namePlaceholder: "Tu nombre",
+        email: "Correo electrónico",
+        emailPlaceholder: "tu@email.com",
+        message: "Mensaje",
+        messagePlaceholder: "Cuéntame sobre tu proyecto o solo di hola...",
+        submit: "Enviar mensaje",
+        sending: "Enviando...",
+        success: "¡Mensaje enviado, gracias!",
+        error: "Algo salió mal. Intenta de nuevo o escribe directamente a",
+        errors: {
+          nameTooShort: "Nombre muy corto",
+          emailInvalid: "Correo inválido",
+          messageTooShort: "Cuéntame un poco más",
+        },
+      },
+      responseTime: {
+        title: "Tiempo de respuesta",
+        text: "Suelo responder en 1–2 días hábiles. Para asuntos urgentes, el correo es lo mejor.",
+      },
     },
     footer: {
       tagline:
