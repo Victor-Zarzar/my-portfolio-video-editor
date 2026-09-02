@@ -26,6 +26,22 @@ on:
       - "content/**"
       - "public/**"
 
+env:
+  VITE_APP_URL: "http://localhost:3000"
+  VITE_DISABLE_DEVTOOLS: "true"
+  VITE_SENTRY_DSN: ${{ secrets.VITE_SENTRY_DSN }}
+  VITE_SITE_EMAIL: ${{ secrets.VITE_SITE_EMAIL }}
+  SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+  SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+  RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  CONTACT_FROM_EMAIL: ${{ secrets.CONTACT_FROM_EMAIL }}
+  CONTACT_TO_EMAIL: ${{ secrets.CONTACT_TO_EMAIL }}
+  VITE_RECAPTCHA_SITE_KEY: ${{ secrets.VITE_RECAPTCHA_SITE_KEY }}
+  GOOGLE_RECAPTCHA_SECRET_KEY: ${{ secrets.GOOGLE_RECAPTCHA_SECRET_KEY }}
+
 jobs:
   lint:
     name: Bun CI
