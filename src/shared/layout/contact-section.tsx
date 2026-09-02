@@ -1,6 +1,8 @@
 import { ArrowUpRight, Mail } from "lucide-react"
 import React from "react"
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
 import { SITE_EMAIL, SOCIAL_LINKS } from "#/config/app-config"
+import { env } from "#/env"
 import { createContactSchema } from "#/lib/contact-schema"
 import { ContactForm } from "#/shared/features/contact-form"
 import { useI18n } from "@/i18n"
@@ -47,6 +49,7 @@ export function ContactSection() {
         nameTooShort: t.contact.form.errors.nameTooShort,
         emailInvalid: t.contact.form.errors.emailInvalid,
         messageTooShort: t.contact.form.errors.messageTooShort,
+        captchaRequired: t.contact.form.errors.captchaRequired,
       }),
     [t]
   )
@@ -65,27 +68,29 @@ export function ContactSection() {
             <span className="text-gold-gradient">{t.contact.titleAccent}</span>.
           </h2>
 
-          <p className="mx-auto mt-6 max-w-xl text-neutral-400">
+          <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-muted-foreground">
             {t.contact.subtitle}
           </p>
         </div>
 
         <div className="mt-14 grid gap-10 text-left lg:grid-cols-[1.4fr_1fr]">
-          <ContactForm
-            schema={schema}
-            labels={{
-              name: t.contact.form.name,
-              namePlaceholder: t.contact.form.namePlaceholder,
-              email: t.contact.form.email,
-              emailPlaceholder: t.contact.form.emailPlaceholder,
-              message: t.contact.form.message,
-              messagePlaceholder: t.contact.form.messagePlaceholder,
-              submit: t.contact.form.submit,
-              sending: t.contact.form.sending,
-              success: t.contact.form.success,
-              error: t.contact.form.error,
-            }}
-          />
+          <GoogleReCaptchaProvider reCaptchaKey={env.VITE_RECAPTCHA_SITE_KEY}>
+            <ContactForm
+              schema={schema}
+              labels={{
+                name: t.contact.form.name,
+                namePlaceholder: t.contact.form.namePlaceholder,
+                email: t.contact.form.email,
+                emailPlaceholder: t.contact.form.emailPlaceholder,
+                message: t.contact.form.message,
+                messagePlaceholder: t.contact.form.messagePlaceholder,
+                submit: t.contact.form.submit,
+                sending: t.contact.form.sending,
+                success: t.contact.form.success,
+                error: t.contact.form.error,
+              }}
+            />
+          </GoogleReCaptchaProvider>
 
           <aside className="flex flex-col gap-8">
             <div>
@@ -98,10 +103,10 @@ export function ContactSection() {
                       href={href}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="group flex items-center justify-between py-3 text-sm text-neutral-300 transition hover:text-white"
+                      className="group flex items-center justify-between py-3 text-sm text-neutral-600 transition hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
                     >
                       <span className="flex items-center gap-2">
-                        <Icon className="size-4 text-neutral-500 transition group-hover:text-gold-400" />
+                        <Icon className="size-4 text-neutral-600 transition hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white" />
                         {label}
                       </span>
 
@@ -113,10 +118,10 @@ export function ContactSection() {
                 <li>
                   <a
                     href={`mailto:${SITE_EMAIL}`}
-                    className="group flex items-center justify-between py-3 text-sm text-neutral-300 transition hover:text-white"
+                    className="group flex items-center justify-between py-3 text-sm text-neutral-600 transition hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
                   >
                     <span className="flex items-center gap-2">
-                      <Mail className="size-4 text-neutral-500 transition group-hover:text-gold-400" />
+                      <Mail className="size-4 text-neutral-600 transition hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white" />
                       Email
                     </span>
 
@@ -129,7 +134,7 @@ export function ContactSection() {
             <div className="rounded-lg border border-border/60 bg-white/3 p-5">
               <p className="eyebrow">{t.contact.responseTime.title}</p>
 
-              <p className="mt-2 text-sm text-neutral-400">
+              <p className="mt-2 max-w-md text-base leading-relaxed text-muted-foreground">
                 {t.contact.responseTime.text}
               </p>
             </div>

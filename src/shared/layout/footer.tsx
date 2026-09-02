@@ -25,6 +25,7 @@ export function Footer() {
     { label: t.nav.about, href: "#about" },
     { label: t.nav.contact, href: "#contact" },
     { label: "Sitemap", href: "/sitemap.xml" },
+    { label: t.nav.policy, href: "/privacy-policy" },
   ]
 
   return (

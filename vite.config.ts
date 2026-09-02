@@ -14,7 +14,12 @@ const envSchema = z.object({
   SENTRY_AUTH_TOKEN: z.string().optional(),
   SENTRY_ORG: z.string().optional(),
   SENTRY_PROJECT: z.string().optional(),
+  SLACK_WEBHOOK_URL: z.url().optional(),
   VITE_SITE_EMAIL: z.email(),
+  CONTACT_FROM_EMAIL: z.email(),
+  CONTACT_TO_EMAIL: z.email(),
+  VITE_RECAPTCHA_SITE_KEY: z.string(),
+  GOOGLE_RECAPTCHA_SECRET_KEY: z.string(),
 })
 
 export default defineConfig(({ mode }) => {

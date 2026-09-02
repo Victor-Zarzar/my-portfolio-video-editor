@@ -1,6 +1,7 @@
 import * as Sentry from "@sentry/tanstackstart-react"
 import { useMutation } from "@tanstack/react-query"
 import React from "react"
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { toast } from "sonner"
 import type { ContactInput } from "#/lib/contact-schema"
 import { sendContactMessage } from "#/lib/contact-server"
@@ -15,6 +16,7 @@ const EMPTY_FORM: ContactInput = {
   email: "",
   message: "",
   website: "",
+  captchaToken: "",
 }
 
 export function ContactForm({ schema, labels }: ContactFormProps) {
@@ -41,10 +43,20 @@ export function ContactForm({ schema, labels }: ContactFormProps) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e: React.SubmitEvent) {
+  const { executeRecaptcha } = useGoogleReCaptcha()
+
+  async function handleSubmit(e: React.SubmitEvent) {
     e.preventDefault()
 
-    const parsed = schema.safeParse(form)
+    const captchaToken = await executeRecaptcha?.("contact_form")
+    if (!captchaToken) {
+      toast.error(labels.error)
+      return
+    }
+
+    const dataToValidate = { ...form, captchaToken }
+
+    const parsed = schema.safeParse(dataToValidate)
 
     if (!parsed.success) {
       const fieldErrors: typeof errors = {}

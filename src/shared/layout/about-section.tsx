@@ -31,26 +31,7 @@ export function AboutSection() {
         <p className="mt-4 text-base leading-relaxed text-muted-foreground">
           {t.about.p2}
         </p>
-        <dl className="mt-10 grid grid-cols-3 gap-6 hairline pt-8">
-          <div>
-            <dt className="text-3xl font-bold text-gold">12</dt>
-            <dd className="mt-1 text-xs tracking-[0.16em] uppercase text-muted-foreground">
-              {t.about.years}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-3xl font-bold text-gold">120+</dt>
-            <dd className="mt-1 text-xs tracking-[0.16em] uppercase text-muted-foreground">
-              {t.about.projects}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-3xl font-bold text-gold">07</dt>
-            <dd className="mt-1 text-xs tracking-[0.16em] uppercase text-muted-foreground">
-              {t.about.awards}
-            </dd>
-          </div>
-        </dl>
+        <dl className="mt-10 grid grid-cols-3 gap-6 hairline pt-8" />
       </div>
     </section>
   )

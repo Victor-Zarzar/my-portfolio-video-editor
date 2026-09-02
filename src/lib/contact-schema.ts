@@ -7,6 +7,7 @@ export function createContactSchema(messages: ContactMessages) {
     email: z.string().trim().email(messages.emailInvalid),
     message: z.string().trim().min(10, messages.messageTooShort).max(2000),
     website: z.string().max(0).optional(),
+    captchaToken: z.string().min(1, messages.captchaRequired),
   })
 }
 

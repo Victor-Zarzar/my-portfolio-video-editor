@@ -40,4 +40,5 @@ export type ContactMessages = {
   nameTooShort: string
   emailInvalid: string
   messageTooShort: string
+  captchaRequired: string
 }

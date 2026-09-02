@@ -12,6 +12,7 @@ import { type ReactNode, useEffect } from "react"
 import { SEO_CONFIG, SITE_NAME, SITE_URL } from "#/config/app-config"
 import { reportAppError } from "#/lib/error-reporting"
 import { ThemeProvider } from "#/shared/common/theme-provider.tsx"
+import { DevToolsGuard } from "#/shared/guard/dev-tools-guard"
 import { Toaster } from "#/shared/ui/sonner"
 import { DEFAULT_LOCALE, I18nProvider, useI18n } from "../i18n"
 import { translations } from "../i18n/translations"
@@ -166,6 +167,7 @@ function RootComponent() {
           defaultTheme="system"
           storageKey="theme"
         >
+          <DevToolsGuard unauthorizedPath="/unauthorized" />
           <Toaster
             position="top-right"
             expand={true}

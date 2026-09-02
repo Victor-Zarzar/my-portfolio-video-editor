@@ -3,6 +3,7 @@ import {
   sentryGlobalRequestMiddleware,
 } from "@sentry/tanstackstart-react"
 import { createCsrfMiddleware, createStart } from "@tanstack/react-start"
+import { securityHeadersMiddleware } from "./lib/security-headers"
 
 const csrfMiddleware = createCsrfMiddleware({
   filter: (ctx) => ctx.handlerType === "serverFn",
@@ -10,7 +11,11 @@ const csrfMiddleware = createCsrfMiddleware({
 
 export const startInstance = createStart(() => {
   return {
-    requestMiddleware: [csrfMiddleware, sentryGlobalRequestMiddleware],
+    requestMiddleware: [
+      securityHeadersMiddleware,
+      csrfMiddleware,
+      sentryGlobalRequestMiddleware,
+    ],
     functionMiddleware: [sentryGlobalFunctionMiddleware],
   }
 })

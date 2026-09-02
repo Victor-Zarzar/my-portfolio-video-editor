@@ -1,7 +1,7 @@
 import { env } from "#/env"
 
-export const SITE_FIRST_NAME = "Victor"
-export const SITE_LAST_NAME = "Zarzar"
+export const SITE_FIRST_NAME = "Vz"
+export const SITE_LAST_NAME = "Films"
 export const SITE_NAME = `${SITE_FIRST_NAME} ${SITE_LAST_NAME}`
 export const SITE_EMAIL = env.VITE_SITE_EMAIL
 
