@@ -98,7 +98,6 @@ export function ContactForm({ schema, labels }: ContactFormProps) {
             placeholder={labels.namePlaceholder}
             value={form.name}
             onChange={handleChange}
-            className="bg-white text-neutral-900 placeholder:text-neutral-400"
           />
           {errors.name && <p className="text-xs text-red-500">{errors.name}</p>}
         </div>
@@ -112,7 +111,6 @@ export function ContactForm({ schema, labels }: ContactFormProps) {
             placeholder={labels.emailPlaceholder}
             value={form.email}
             onChange={handleChange}
-            className="bg-white text-neutral-900 placeholder:text-neutral-400"
           />
           {errors.email && (
             <p className="text-xs text-red-500">{errors.email}</p>
@@ -129,7 +127,7 @@ export function ContactForm({ schema, labels }: ContactFormProps) {
           placeholder={labels.messagePlaceholder}
           value={form.message}
           onChange={handleChange}
-          className="resize-none bg-white text-neutral-900 placeholder:text-neutral-400"
+          className="resize-none"
         />
         {errors.message && (
           <p className="text-xs text-red-500">{errors.message}</p>
