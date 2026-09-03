@@ -9,6 +9,7 @@ export const env = createEnv({
     VITE_SITE_EMAIL: z.email(),
     VITE_RECAPTCHA_SITE_KEY: z.string().min(1),
     VITE_DISABLE_DEVTOOLS: z.string().optional(),
+    VITE_GA_MEASUREMENT_ID: z.string().min(1),
   },
   server: {
     SENTRY_DSN: z.url().optional(),
@@ -27,6 +28,7 @@ export const env = createEnv({
     VITE_SITE_EMAIL: import.meta.env.VITE_SITE_EMAIL,
     VITE_RECAPTCHA_SITE_KEY: import.meta.env.VITE_RECAPTCHA_SITE_KEY,
     VITE_DISABLE_DEVTOOLS: import.meta.env.VITE_DISABLE_DEVTOOLS,
+    VITE_GA_MEASUREMENT_ID: import.meta.env.VITE_GA_MEASUREMENT_ID,
     SENTRY_DSN: process.env.SENTRY_DSN,
     SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
     SENTRY_ORG: process.env.SENTRY_ORG,

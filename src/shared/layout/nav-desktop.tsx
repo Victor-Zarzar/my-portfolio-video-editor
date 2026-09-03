@@ -9,7 +9,7 @@ export function Navbar() {
   const { t } = useI18n()
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-2xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-2xl dark:bg-background dark:backdrop-blur-none">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link
           to="."

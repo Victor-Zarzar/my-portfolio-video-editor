@@ -42,3 +42,9 @@ export type ContactMessages = {
   messageTooShort: string
   captchaRequired: string
 }
+
+export type DevToolsGuardProps = {
+  unauthorizedPath?: string
+}
+
+export type CookieConsentValue = "accepted" | "declined"

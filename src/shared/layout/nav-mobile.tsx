@@ -26,10 +26,10 @@ export function NavMobile() {
       <SheetTrigger
         render={
           <Button
-            variant="outline"
+            variant="ghost"
             size="icon"
             aria-label="Menu"
-            className="h-9 w-9 rounded-none border-gold/40 text-gold hover:bg-gold hover:text-primary-foreground sm:hidden"
+            className="h-9 w-9 rounded-none border border-gold/40 bg-transparent text-gold hover:bg-gold hover:text-primary-foreground sm:hidden"
           />
         }
       >

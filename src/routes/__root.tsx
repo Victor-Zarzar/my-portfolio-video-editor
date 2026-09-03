@@ -10,8 +10,13 @@ import {
 } from "@tanstack/react-router"
 import { type ReactNode, useEffect } from "react"
 import { SEO_CONFIG, SITE_NAME, SITE_URL } from "#/config/app-config"
+import { GA_MEASUREMENT_ID } from "#/lib/analytics"
 import { reportAppError } from "#/lib/error-reporting"
 import { ThemeProvider } from "#/shared/common/theme-provider.tsx"
+import {
+  CookieConsent,
+  getCookieConsentFn,
+} from "#/shared/features/cookie-consent.tsx"
 import { DevToolsGuard } from "#/shared/guard/dev-tools-guard"
 import { Toaster } from "#/shared/ui/sonner"
 import { DEFAULT_LOCALE, I18nProvider, useI18n } from "../i18n"
@@ -84,11 +89,17 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   {
-    head: ({ matches }) => {
+    loader: async () => {
+      const cookieConsent = await getCookieConsentFn()
+      return { cookieConsent }
+    },
+    head: ({ matches, loaderData }) => {
       const pathname = matches[matches.length - 1]?.pathname ?? "/"
       const canonical =
         pathname === "/" ? SITE_URL || "/" : `${SITE_URL}${pathname}`
       const ogImage = `${SITE_URL}${SEO_CONFIG.images.ogImage}`
+
+      const gaConsented = loaderData?.cookieConsent === "accepted"
 
       return {
         meta: [
@@ -131,6 +142,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           { rel: "stylesheet", href: appCss },
           { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
         ],
+        scripts:
+          gaConsented && GA_MEASUREMENT_ID
+            ? [
+                {
+                  src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
+                  async: true,
+                },
+                {
+                  id: "ga-gtag-inline",
+                  children: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });
+                  `,
+                },
+              ]
+            : [],
       }
     },
     shellComponent: RootShell,
@@ -159,6 +188,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext()
+  const { cookieConsent } = Route.useLoaderData()
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -174,6 +204,7 @@ function RootComponent() {
           />
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
+          <CookieConsent initialConsent={cookieConsent} />
         </ThemeProvider>
       </I18nProvider>
     </QueryClientProvider>

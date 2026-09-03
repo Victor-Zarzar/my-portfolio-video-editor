@@ -169,6 +169,12 @@ export const translations = {
       contactDescription:
         "Caso tenha dúvidas sobre esta Política de Privacidade ou sobre como suas informações são tratadas, entre em contato pelo formulário disponível neste site.",
     },
+    cookieConsent: {
+      message: "Usamos cookies para melhorar sua experiência.",
+      privacyLink: "Política de Privacidade",
+      accept: "Aceitar",
+      decline: "Recusar",
+    },
   },
   "en-US": {
     seo: {
@@ -324,6 +330,12 @@ export const translations = {
       contactTitle: "07. Contact",
       contactDescription:
         "If you have questions about this Privacy Policy or how your information is handled, please reach out through the contact form available on this site.",
+    },
+    cookieConsent: {
+      message: "We use cookies to improve your experience.",
+      privacyLink: "Privacy Policy",
+      accept: "Accept",
+      decline: "Decline",
     },
   },
   "es-ES": {
@@ -486,6 +498,12 @@ export const translations = {
       contactTitle: "07. Contacto",
       contactDescription:
         "Si tienes dudas sobre esta Política de Privacidad o sobre cómo se trata tu información, contáctanos a través del formulario disponible en este sitio.",
+    },
+    cookieConsent: {
+      message: "Usamos cookies para mejorar tu experiencia.",
+      privacyLink: "Política de Privacidad",
+      accept: "Aceptar",
+      decline: "Rechazar",
     },
   },
 } as const

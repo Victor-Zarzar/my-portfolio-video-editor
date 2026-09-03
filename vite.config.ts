@@ -20,6 +20,7 @@ const envSchema = z.object({
   CONTACT_TO_EMAIL: z.email(),
   VITE_RECAPTCHA_SITE_KEY: z.string(),
   GOOGLE_RECAPTCHA_SECRET_KEY: z.string(),
+  VITE_GA_MEASUREMENT_ID: z.string(),
 })
 
 export default defineConfig(({ mode }) => {
