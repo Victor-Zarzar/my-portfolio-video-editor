@@ -29,7 +29,13 @@ export default defineConfig(({ mode }) => {
 
   const basePlugins = [
     devtools(),
-    netlify(),
+    netlify({
+      dev: {
+        edgeFunctions: {
+          enabled: false,
+        },
+      },
+    }),
     tailwindcss(),
     tanstackStart(),
     viteReact(),

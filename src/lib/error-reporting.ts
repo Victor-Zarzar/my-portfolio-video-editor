@@ -1,20 +1,4 @@
-type AppErrorOptions = {
-  mechanism?:
-    | "manual"
-    | "onerror"
-    | "unhandledrejection"
-    | "react_error_boundary"
-  handled?: boolean
-  severity?: "error" | "warning" | "info"
-}
-
-type ErrorReportingHooks = {
-  captureException?: (
-    error: unknown,
-    context?: Record<string, unknown>,
-    options?: AppErrorOptions
-  ) => void
-}
+import type { AppErrorOptions, ErrorReportingHooks } from "#/shared/types/main"
 
 declare global {
   interface Window {

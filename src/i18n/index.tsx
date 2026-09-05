@@ -7,7 +7,7 @@ import {
   useMemo,
   useState,
 } from "react"
-
+import type { I18nValue } from "#/shared/types/main"
 import {
   type Dictionary,
   type Locale,
@@ -18,12 +18,6 @@ import {
 const COOKIE_NAME = "locale"
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365 // 1 year
 export const DEFAULT_LOCALE: Locale = "en-US"
-
-type I18nValue = {
-  locale: Locale
-  setLocale: (locale: Locale) => void
-  t: Dictionary
-}
 
 const I18nContext = createContext<I18nValue | null>(null)
 

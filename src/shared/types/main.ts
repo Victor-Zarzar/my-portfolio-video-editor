@@ -1,3 +1,5 @@
+import type { Locale } from "#/i18n"
+import type { Dictionary } from "#/i18n/translations"
 import type { ContactSchema } from "#/lib/contact-schema"
 
 export type RouteNode = {
@@ -48,3 +50,27 @@ export type DevToolsGuardProps = {
 }
 
 export type CookieConsentValue = "accepted" | "declined"
+
+export type I18nValue = {
+  locale: Locale
+  setLocale: (locale: Locale) => void
+  t: Dictionary
+}
+
+export type AppErrorOptions = {
+  mechanism?:
+    | "manual"
+    | "onerror"
+    | "unhandledrejection"
+    | "react_error_boundary"
+  handled?: boolean
+  severity?: "error" | "warning" | "info"
+}
+
+export type ErrorReportingHooks = {
+  captureException?: (
+    error: unknown,
+    context?: Record<string, unknown>,
+    options?: AppErrorOptions
+  ) => void
+}
