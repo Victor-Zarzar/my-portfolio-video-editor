@@ -1,9 +1,13 @@
-import { useI18n } from "@/i18n"
+import { m } from "#/paraglide/messages"
 
 const serviceNumbers = ["01", "02", "03"]
 
 export function ServicesSection() {
-  const { t } = useI18n()
+  const services = [
+    { title: m.services_item_1_title(), text: m.services_item_1_text() },
+    { title: m.services_item_2_title(), text: m.services_item_2_text() },
+    { title: m.services_item_3_title(), text: m.services_item_3_text() },
+  ]
 
   return (
     <section
@@ -11,9 +15,9 @@ export function ServicesSection() {
       className="border-y border-border/60 bg-card/40"
     >
       <div className="mx-auto max-w-6xl px-6 py-24">
-        <p className="eyebrow">{t.services.eyebrow}</p>
+        <p className="eyebrow">{m.services_eyebrow()}</p>
         <div className="mt-12 grid gap-px bg-border/60 sm:grid-cols-3">
-          {t.services.items.map((s, i) => (
+          {services.map((s, i) => (
             <div
               key={s.title}
               className="bg-background p-8"

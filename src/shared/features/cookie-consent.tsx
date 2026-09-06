@@ -7,7 +7,7 @@ import {
   loadGoogleAnalytics,
   removeGoogleAnalytics,
 } from "#/lib/analytics"
-import { useI18n } from "../../i18n"
+import { m } from "#/paraglide/messages"
 import type { CookieConsentValue } from "../types/main"
 
 const COOKIE_NAME = "cookie_consent"
@@ -36,7 +36,6 @@ export function CookieConsent({
 }: {
   initialConsent: CookieConsentValue | null
 }) {
-  const { t } = useI18n()
   const [consent, setConsent] = useState(initialConsent)
   const [isPending, setIsPending] = useState(false)
 
@@ -67,12 +66,12 @@ export function CookieConsent({
     <div className="fixed inset-x-0 bottom-0 z-50 border-t border-input bg-background/95 px-4 py-4 backdrop-blur supports-backdrop-filter:bg-background/80 dark:bg-background dark:backdrop-blur-none dark:supports-backdrop-filter:bg-background sm:px-6">
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <p className="text-sm text-muted-foreground">
-          {t.cookieConsent.message}{" "}
+          {m.cookie_consent_message()}{" "}
           <Link
             to="/privacy-policy"
             className="text-foreground underline underline-offset-2 hover:text-primary"
           >
-            {t.cookieConsent.privacyLink}
+            {m.cookie_consent_privacy_link()}
           </Link>
         </p>
 
@@ -83,7 +82,7 @@ export function CookieConsent({
             onClick={() => handleChoice("declined")}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent disabled:opacity-50"
           >
-            {t.cookieConsent.decline}
+            {m.cookie_consent_decline()}
           </button>
           <button
             type="button"
@@ -91,7 +90,7 @@ export function CookieConsent({
             onClick={() => handleChoice("accepted")}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50"
           >
-            {t.cookieConsent.accept}
+            {m.cookie_consent_accept()}
           </button>
         </div>
       </div>

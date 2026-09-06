@@ -1,9 +1,7 @@
+import { m } from "#/paraglide/messages"
 import portraitImg from "@/assets/portrait.jpg"
-import { useI18n } from "@/i18n"
 
 export function AboutSection() {
-  const { t } = useI18n()
-
   return (
     <section
       id="about"
@@ -12,7 +10,7 @@ export function AboutSection() {
       <div className="grain-overlay">
         <img
           src={portraitImg}
-          alt={t.about.portraitAlt}
+          alt={m.about_portrait_alt()}
           loading="lazy"
           width={1024}
           height={1280}
@@ -20,16 +18,16 @@ export function AboutSection() {
         />
       </div>
       <div>
-        <p className="eyebrow">{t.about.eyebrow}</p>
+        <p className="eyebrow">{m.about_eyebrow()}</p>
         <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
-          {t.about.title1}
-          <span className="text-gold-gradient">{t.about.titleAccent}</span>.
+          {m.about_title1()}
+          <span className="text-gold-gradient">{m.about_title_accent()}</span>.
         </h2>
         <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-          {t.about.p1}
+          {m.about_p1()}
         </p>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-          {t.about.p2}
+          {m.about_p2()}
         </p>
         <dl className="mt-10 grid grid-cols-3 gap-6 hairline pt-8" />
       </div>

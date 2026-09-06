@@ -4,8 +4,9 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
 import { SITE_EMAIL, SOCIAL_LINKS } from "#/config/app-config"
 import { env } from "#/env"
 import { createContactSchema } from "#/lib/contact-schema"
+import { m } from "#/paraglide/messages"
+import { getLocale } from "#/paraglide/runtime"
 import { ContactForm } from "#/shared/features/contact-form"
-import { useI18n } from "@/i18n"
 import {
   FacebookIcon,
   InstagramIcon,
@@ -41,17 +42,15 @@ const SOCIAL_ITEMS = [
 ] as const
 
 export function ContactSection() {
-  const { t } = useI18n()
-
   const schema = React.useMemo(
     () =>
       createContactSchema({
-        nameTooShort: t.contact.form.errors.nameTooShort,
-        emailInvalid: t.contact.form.errors.emailInvalid,
-        messageTooShort: t.contact.form.errors.messageTooShort,
-        captchaRequired: t.contact.form.errors.captchaRequired,
+        nameTooShort: m.contact_form_errors_name_too_short(),
+        emailInvalid: m.contact_form_errors_email_invalid(),
+        messageTooShort: m.contact_form_errors_message_too_short(),
+        captchaRequired: m.contact_form_errors_captcha_required(),
       }),
-    [t]
+    [getLocale()]
   )
 
   return (
@@ -61,15 +60,18 @@ export function ContactSection() {
     >
       <div className="mx-auto max-w-6xl px-6 py-28">
         <div className="text-center">
-          <p className="eyebrow">{t.contact.eyebrow}</p>
+          <p className="eyebrow">{m.contact_eyebrow()}</p>
 
           <h2 className="mx-auto mt-6 max-w-3xl text-4xl font-extrabold leading-tight sm:text-6xl">
-            {t.contact.title1}
-            <span className="text-gold-gradient">{t.contact.titleAccent}</span>.
+            {m.contact_title1()}
+            <span className="text-gold-gradient">
+              {m.contact_title_accent()}
+            </span>
+            .
           </h2>
 
           <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-muted-foreground">
-            {t.contact.subtitle}
+            {m.contact_subtitle()}
           </p>
         </div>
 
@@ -78,23 +80,23 @@ export function ContactSection() {
             <ContactForm
               schema={schema}
               labels={{
-                name: t.contact.form.name,
-                namePlaceholder: t.contact.form.namePlaceholder,
-                email: t.contact.form.email,
-                emailPlaceholder: t.contact.form.emailPlaceholder,
-                message: t.contact.form.message,
-                messagePlaceholder: t.contact.form.messagePlaceholder,
-                submit: t.contact.form.submit,
-                sending: t.contact.form.sending,
-                success: t.contact.form.success,
-                error: t.contact.form.error,
+                name: m.contact_form_name(),
+                namePlaceholder: m.contact_form_name_placeholder(),
+                email: m.contact_form_email(),
+                emailPlaceholder: m.contact_form_email_placeholder(),
+                message: m.contact_form_message(),
+                messagePlaceholder: m.contact_form_message_placeholder(),
+                submit: m.contact_form_submit(),
+                sending: m.contact_form_sending(),
+                success: m.contact_form_success(),
+                error: m.contact_form_error(),
               }}
             />
           </GoogleReCaptchaProvider>
 
           <aside className="flex flex-col gap-8">
             <div>
-              <p className="eyebrow">{t.contact.findMe}</p>
+              <p className="eyebrow">{m.contact_find_me()}</p>
 
               <ul className="mt-4 divide-y divide-border/60 border-t border-border/60">
                 {SOCIAL_ITEMS.map(({ key, href, label, icon: Icon }) => (
@@ -132,10 +134,10 @@ export function ContactSection() {
             </div>
 
             <div className="rounded-lg border border-border/60 bg-white/3 p-5">
-              <p className="eyebrow">{t.contact.responseTime.title}</p>
+              <p className="eyebrow">{m.contact_response_time_title()}</p>
 
               <p className="mt-2 max-w-md text-base leading-relaxed text-muted-foreground">
-                {t.contact.responseTime.text}
+                {m.contact_response_time_text()}
               </p>
             </div>
           </aside>

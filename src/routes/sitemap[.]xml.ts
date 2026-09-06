@@ -1,10 +1,11 @@
 import type { AnyRoute } from "@tanstack/react-router"
 import { createFileRoute } from "@tanstack/react-router"
 import { SITE_URL } from "#/config/app-config"
+import { locales, localizeUrl } from "#/paraglide/runtime"
 import { routeTree } from "@/routeTree.gen"
 
 const ROUTE_BLACKLIST = new Set<string>([
-  // "/dashboard", // ex: routes privates and publics.
+  "/unauthorized", // error page
 ])
 
 export const Route = createFileRoute("/sitemap.xml")({
@@ -13,23 +14,34 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: () => {
         const paths = getRoutePaths(routeTree)
         const lastmod = new Date().toISOString().split("T")[0]
+        const uniquePaths = [...new Set(paths.filter(shouldIncludeInSitemap))]
 
-        const urls = [...new Set(paths.filter(shouldIncludeInSitemap))].map(
-          (path) => `${SITE_URL}${path === "/" ? "" : path}`
-        )
+        const blocks = uniquePaths.flatMap((path) => {
+          const baseUrl = `${SITE_URL}${path === "/" ? "" : path}`
+          const alternates = locales.map((locale) => ({
+            locale,
+            href: localizeUrl(baseUrl, { locale }).href,
+          }))
 
-        const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls
-  .map(
-    (url) => `  <url>
-    <loc>${escapeXml(url)}</loc>
+          return alternates.map(
+            ({ href }) => `  <url>
+    <loc>${escapeXml(href)}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>`
+${alternates
+  .map(
+    (alt) =>
+      `    <xhtml:link rel="alternate" hreflang="${alt.locale}" href="${escapeXml(alt.href)}" />`
   )
   .join("\n")}
+  </url>`
+          )
+        })
+
+        const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${blocks.join("\n")}
 </urlset>`
 
         return new Response(sitemap, {

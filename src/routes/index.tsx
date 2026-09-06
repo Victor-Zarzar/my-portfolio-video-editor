@@ -9,7 +9,7 @@ import { ServicesSection } from "#/shared/layout/services-section"
 import { WorksSection } from "#/shared/layout/works-section"
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: App,
 })
 
 const sectionVariants: Variants = {
@@ -25,7 +25,7 @@ const sectionVariants: Variants = {
   }),
 }
 
-function Index() {
+function App() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

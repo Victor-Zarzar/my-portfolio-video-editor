@@ -1,3 +1,4 @@
+import { paraglideVitePlugin } from "@inlang/paraglide-js"
 import netlify from "@netlify/vite-plugin-tanstack-start"
 import { sentryVitePlugin } from "@sentry/vite-plugin"
 import tailwindcss from "@tailwindcss/vite"
@@ -30,11 +31,24 @@ export default defineConfig(({ mode }) => {
   const basePlugins = [
     devtools(),
     netlify({
-      dev: {
-        edgeFunctions: {
-          enabled: false,
+      dev: { edgeFunctions: { enabled: false } },
+    }),
+    paraglideVitePlugin({
+      project: "./project.inlang",
+      outdir: "./src/paraglide",
+      outputStructure: "message-modules",
+      cookieName: "locale",
+      strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
+      urlPatterns: [
+        {
+          pattern: "/:path(.*)?",
+          localized: [
+            ["pt-BR", "/pt-br/:path(.*)?"],
+            ["en-US", "/en/:path(.*)?"],
+            ["es-ES", "/es/:path(.*)?"],
+          ],
         },
-      },
+      ],
     }),
     tailwindcss(),
     tanstackStart(),

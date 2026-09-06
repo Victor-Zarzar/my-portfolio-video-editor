@@ -2,20 +2,19 @@ import { Link } from "@tanstack/react-router"
 import { Menu } from "lucide-react"
 import { useState } from "react"
 import { SITE_FIRST_NAME, SITE_LAST_NAME } from "#/config/app-config"
-import { useI18n } from "@/i18n"
+import { m } from "#/paraglide/messages"
 import { LanguageSwitcher } from "@/shared/common/language-switcher"
 import { ModeToggle } from "@/shared/common/mode-toggle"
 import { Button } from "@/shared/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/shared/ui/sheet"
 
 export function NavMobile() {
-  const { t } = useI18n()
   const [open, setOpen] = useState(false)
 
   const links = [
-    { href: "#works", label: t.nav.works },
-    { href: "#services", label: t.nav.services },
-    { href: "#about", label: t.nav.about },
+    { href: "#works", label: m.nav_works() },
+    { href: "#services", label: m.nav_services() },
+    { href: "#about", label: m.nav_about() },
   ]
 
   return (
@@ -62,7 +61,7 @@ export function NavMobile() {
           onClick={() => setOpen(false)}
           className="mt-10 inline-block border border-gold/60 px-4 py-2 text-[0.65rem] font-semibold tracking-[0.22em] uppercase text-gold transition-colors hover:bg-gold hover:text-primary-foreground"
         >
-          {t.nav.contact}
+          {m.nav_contact()}
         </Link>
 
         <div className="mt-10 flex items-center justify-between gap-4 hairline pt-6">

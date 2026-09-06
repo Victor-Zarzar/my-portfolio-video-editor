@@ -1,14 +1,19 @@
+import { m } from "#/paraglide/messages"
 import work1 from "@/assets/work-1.jpg"
 import work2 from "@/assets/work-2.jpg"
 import work3 from "@/assets/work-3.jpg"
 import work4 from "@/assets/work-4.jpg"
-import { useI18n } from "@/i18n"
 
 const workImages = [work1, work2, work3, work4]
 const workYears = ["2026", "2025", "2025", "2024"]
 
 export function WorksSection() {
-  const { t } = useI18n()
+  const works = [
+    { title: m.works_item_1_title(), kind: m.works_item_1_kind() },
+    { title: m.works_item_2_title(), kind: m.works_item_2_kind() },
+    { title: m.works_item_3_title(), kind: m.works_item_3_kind() },
+    { title: m.works_item_4_title(), kind: m.works_item_4_kind() },
+  ]
 
   return (
     <section
@@ -17,18 +22,18 @@ export function WorksSection() {
     >
       <div className="flex items-end justify-between gap-6">
         <div>
-          <p className="eyebrow">{t.works.eyebrow}</p>
+          <p className="eyebrow">{m.works_eyebrow()}</p>
           <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
-            {t.works.title}
+            {m.works_title()}
           </h2>
         </div>
         <span className="hidden text-xs tracking-[0.18em] uppercase text-muted-foreground sm:block">
-          {t.works.range}
+          {m.works_range()}
         </span>
       </div>
 
       <div className="mt-14 grid gap-6 sm:grid-cols-2">
-        {t.works.items.map((w, i) => (
+        {works.map((w, i) => (
           <article
             key={w.title}
             className="frame-card group overflow-hidden"
@@ -36,7 +41,7 @@ export function WorksSection() {
             <div className="grain-overlay overflow-hidden">
               <img
                 src={workImages[i]}
-                alt={`${t.works.frameAlt} ${w.title}`}
+                alt={`${m.works_frame_alt()} ${w.title}`}
                 loading="lazy"
                 width={1024}
                 height={768}

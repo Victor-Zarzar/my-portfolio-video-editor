@@ -1,7 +1,13 @@
-import { localeLabels, locales, useI18n } from "@/i18n"
+import { getLocale, type Locale, locales, setLocale } from "#/paraglide/runtime"
+
+const localeLabels: Record<Locale, string> = {
+  "pt-BR": "PT",
+  "en-US": "EN",
+  "es-ES": "ES",
+}
 
 export function LanguageSwitcher() {
-  const { locale, setLocale } = useI18n()
+  const currentLocale = getLocale()
 
   return (
     <div className="flex items-center gap-1 text-[0.65rem] tracking-[0.18em] uppercase">
@@ -14,9 +20,9 @@ export function LanguageSwitcher() {
           <button
             type="button"
             onClick={() => setLocale(code)}
-            aria-pressed={locale === code}
+            aria-pressed={currentLocale === code}
             className={
-              locale === code
+              currentLocale === code
                 ? "text-gold transition-colors"
                 : "text-muted-foreground transition-colors hover:text-foreground"
             }

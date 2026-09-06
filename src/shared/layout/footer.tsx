@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router"
 import { SITE_NAME, SOCIAL_LINKS } from "#/config/app-config"
+import { m } from "#/paraglide/messages"
 import {
   FacebookIcon,
   InstagramIcon,
   VimeoIcon,
   YoutubeIcon,
 } from "#/shared/layout/social-icons.tsx"
-import { useI18n } from "@/i18n"
 
 const socialItems = [
   { label: "Instagram", href: SOCIAL_LINKS.instagram, Icon: InstagramIcon },
@@ -16,16 +16,15 @@ const socialItems = [
 ]
 
 export function Footer() {
-  const { t } = useI18n()
   const year = new Date().getFullYear()
 
   const navItems = [
-    { label: t.nav.works, href: "#works" },
-    { label: t.nav.services, href: "#services" },
-    { label: t.nav.about, href: "#about" },
-    { label: t.nav.contact, href: "#contact" },
+    { label: m.nav_works(), href: "#works" },
+    { label: m.nav_services(), href: "#services" },
+    { label: m.nav_about(), href: "#about" },
+    { label: m.nav_contact(), href: "#contact" },
     { label: "Sitemap", href: "/sitemap.xml" },
-    { label: t.nav.policy, href: "/privacy-policy" },
+    { label: m.nav_policy(), href: "/privacy-policy" },
   ]
 
   return (
@@ -40,7 +39,7 @@ export function Footer() {
             {SITE_NAME}
           </Link>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            {t.footer.tagline}
+            {m.footer_tagline()}
           </p>
         </div>
 
@@ -80,7 +79,7 @@ export function Footer() {
           <span>
             © {year} {SITE_NAME}.
           </span>
-          <span>{t.footer.rightsReserved}</span>
+          <span>{m.footer_rights_reserved()}</span>
         </div>
       </div>
     </footer>
