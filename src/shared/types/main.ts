@@ -1,5 +1,3 @@
-import type { Locale } from "#/i18n"
-import type { Dictionary } from "#/i18n/translations"
 import type { ContactSchema } from "#/lib/contact-schema"
 
 export type RouteNode = {
@@ -50,12 +48,6 @@ export type DevToolsGuardProps = {
 }
 
 export type CookieConsentValue = "accepted" | "declined"
-
-export type I18nValue = {
-  locale: Locale
-  setLocale: (locale: Locale) => void
-  t: Dictionary
-}
 
 export type AppErrorOptions = {
   mechanism?:
