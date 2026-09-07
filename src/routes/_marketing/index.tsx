@@ -1,14 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router"
 import { motion, type Variants } from "motion/react"
-import { AboutSection } from "#/shared/layout/about-section"
-import { ContactSection } from "#/shared/layout/contact-section"
-import { Footer } from "#/shared/layout/footer"
+import { AboutTeaser } from "#/shared/layout/about-teaser"
+import { ContactTeaser } from "#/shared/layout/contact-teaser"
 import { HeroSection } from "#/shared/layout/hero-section"
-import { Navbar } from "#/shared/layout/nav-desktop.tsx"
-import { ServicesSection } from "#/shared/layout/services-section"
-import { WorksSection } from "#/shared/layout/works-section"
+import { ServicesTeaser } from "#/shared/layout/services-teaser"
+import { WorksTeaser } from "#/shared/layout/works-teaser"
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/_marketing/")({
   component: App,
 })
 
@@ -28,7 +26,6 @@ const sectionVariants: Variants = {
 function App() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       <main id="top">
         <HeroSection />
 
@@ -39,7 +36,7 @@ function App() {
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
         >
-          <WorksSection />
+          <WorksTeaser />
         </motion.div>
 
         <motion.div
@@ -49,7 +46,7 @@ function App() {
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
         >
-          <ServicesSection />
+          <ServicesTeaser />
         </motion.div>
 
         <motion.div
@@ -59,7 +56,7 @@ function App() {
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
         >
-          <AboutSection />
+          <AboutTeaser />
         </motion.div>
 
         <motion.div
@@ -69,10 +66,9 @@ function App() {
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
         >
-          <ContactSection />
+          <ContactTeaser />
         </motion.div>
       </main>
-      <Footer />
     </div>
   )
 }

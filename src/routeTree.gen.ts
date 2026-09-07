@@ -9,20 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as MarketingRouteImport } from './routes/_marketing'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as UnauthorizedRouteImport } from './routes/unauthorized'
+import { Route as MarketingIndexRouteImport } from './routes/_marketing/index'
+import { Route as MarketingAboutRouteImport } from './routes/_marketing/about'
+import { Route as MarketingContactRouteImport } from './routes/_marketing/contact'
+import { Route as MarketingPrivacyPolicyRouteImport } from './routes/_marketing/privacy-policy'
+import { Route as MarketingServicesRouteImport } from './routes/_marketing/services'
+import { Route as MarketingWorksRouteImport } from './routes/_marketing/works'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
-  id: '/privacy-policy',
-  path: '/privacy-policy',
+const MarketingRoute = MarketingRouteImport.update({
+  id: '/_marketing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
@@ -40,47 +39,111 @@ const UnauthorizedRoute = UnauthorizedRouteImport.update({
   path: '/unauthorized',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketingIndexRoute = MarketingIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MarketingRoute,
+} as any)
+const MarketingAboutRoute = MarketingAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => MarketingRoute,
+} as any)
+const MarketingContactRoute = MarketingContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => MarketingRoute,
+} as any)
+const MarketingPrivacyPolicyRoute = MarketingPrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => MarketingRoute,
+} as any)
+const MarketingServicesRoute = MarketingServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => MarketingRoute,
+} as any)
+const MarketingWorksRoute = MarketingWorksRouteImport.update({
+  id: '/works',
+  path: '/works',
+  getParentRoute: () => MarketingRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/': typeof MarketingIndexRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unauthorized': typeof UnauthorizedRoute
+  '/about': typeof MarketingAboutRoute
+  '/contact': typeof MarketingContactRoute
+  '/privacy-policy': typeof MarketingPrivacyPolicyRoute
+  '/services': typeof MarketingServicesRoute
+  '/works': typeof MarketingWorksRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/privacy-policy': typeof PrivacyPolicyRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unauthorized': typeof UnauthorizedRoute
+  '/about': typeof MarketingAboutRoute
+  '/contact': typeof MarketingContactRoute
+  '/privacy-policy': typeof MarketingPrivacyPolicyRoute
+  '/services': typeof MarketingServicesRoute
+  '/works': typeof MarketingWorksRoute
+  '/': typeof MarketingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/_marketing': typeof MarketingRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unauthorized': typeof UnauthorizedRoute
+  '/_marketing/about': typeof MarketingAboutRoute
+  '/_marketing/contact': typeof MarketingContactRoute
+  '/_marketing/privacy-policy': typeof MarketingPrivacyPolicyRoute
+  '/_marketing/services': typeof MarketingServicesRoute
+  '/_marketing/works': typeof MarketingWorksRoute
+  '/_marketing/': typeof MarketingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/privacy-policy' | '/robots.txt' | '/sitemap.xml' | '/unauthorized'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy-policy' | '/robots.txt' | '/sitemap.xml' | '/unauthorized'
-  id:
-    | '__root__'
     | '/'
-    | '/privacy-policy'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/unauthorized'
+    | '/about'
+    | '/contact'
+    | '/privacy-policy'
+    | '/services'
+    | '/works'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/robots.txt'
+    | '/sitemap.xml'
+    | '/unauthorized'
+    | '/about'
+    | '/contact'
+    | '/privacy-policy'
+    | '/services'
+    | '/works'
+    | '/'
+  id:
+    | '__root__'
+    | '/_marketing'
+    | '/robots.txt'
+    | '/sitemap.xml'
+    | '/unauthorized'
+    | '/_marketing/about'
+    | '/_marketing/contact'
+    | '/_marketing/privacy-policy'
+    | '/_marketing/services'
+    | '/_marketing/works'
+    | '/_marketing/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  MarketingRoute: typeof MarketingRouteWithChildren
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UnauthorizedRoute: typeof UnauthorizedRoute
@@ -88,18 +151,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
+    '/_marketing': {
+      id: '/_marketing'
+      path: ''
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy-policy': {
-      id: '/privacy-policy'
-      path: '/privacy-policy'
-      fullPath: '/privacy-policy'
-      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      preLoaderRoute: typeof MarketingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/robots.txt': {
@@ -123,12 +179,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UnauthorizedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_marketing/': {
+      id: '/_marketing/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof MarketingIndexRouteImport
+      parentRoute: typeof MarketingRoute
+    }
+    '/_marketing/about': {
+      id: '/_marketing/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof MarketingAboutRouteImport
+      parentRoute: typeof MarketingRoute
+    }
+    '/_marketing/contact': {
+      id: '/_marketing/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof MarketingContactRouteImport
+      parentRoute: typeof MarketingRoute
+    }
+    '/_marketing/privacy-policy': {
+      id: '/_marketing/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof MarketingPrivacyPolicyRouteImport
+      parentRoute: typeof MarketingRoute
+    }
+    '/_marketing/services': {
+      id: '/_marketing/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof MarketingServicesRouteImport
+      parentRoute: typeof MarketingRoute
+    }
+    '/_marketing/works': {
+      id: '/_marketing/works'
+      path: '/works'
+      fullPath: '/works'
+      preLoaderRoute: typeof MarketingWorksRouteImport
+      parentRoute: typeof MarketingRoute
+    }
   }
 }
 
+interface MarketingRouteChildren {
+  MarketingAboutRoute: typeof MarketingAboutRoute
+  MarketingContactRoute: typeof MarketingContactRoute
+  MarketingPrivacyPolicyRoute: typeof MarketingPrivacyPolicyRoute
+  MarketingServicesRoute: typeof MarketingServicesRoute
+  MarketingWorksRoute: typeof MarketingWorksRoute
+  MarketingIndexRoute: typeof MarketingIndexRoute
+}
+
+const MarketingRouteChildren: MarketingRouteChildren = {
+  MarketingAboutRoute: MarketingAboutRoute,
+  MarketingContactRoute: MarketingContactRoute,
+  MarketingPrivacyPolicyRoute: MarketingPrivacyPolicyRoute,
+  MarketingServicesRoute: MarketingServicesRoute,
+  MarketingWorksRoute: MarketingWorksRoute,
+  MarketingIndexRoute: MarketingIndexRoute,
+}
+
+const MarketingRouteWithChildren = MarketingRoute._addFileChildren(
+  MarketingRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  MarketingRoute: MarketingRouteWithChildren,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UnauthorizedRoute: UnauthorizedRoute,

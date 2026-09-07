@@ -85,7 +85,7 @@ export function ContactForm({ schema, labels }: ContactFormProps) {
         onChange={handleChange}
         tabIndex={-1}
         autoComplete="off"
-        className="absolute left-[-9999px] h-0 w-0"
+        className="absolute -left-2499.75 h-0 w-0"
         aria-hidden="true"
       />
 

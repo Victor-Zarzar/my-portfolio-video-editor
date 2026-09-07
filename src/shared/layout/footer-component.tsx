@@ -19,10 +19,10 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   const navItems = [
-    { label: m.nav_works(), href: "#works" },
-    { label: m.nav_services(), href: "#services" },
-    { label: m.nav_about(), href: "#about" },
-    { label: m.nav_contact(), href: "#contact" },
+    { label: m.nav_works(), href: "/works" },
+    { label: m.nav_services(), href: "/services" },
+    { label: m.nav_about(), href: "/about" },
+    { label: m.nav_contact(), href: "/contact" },
     { label: "Sitemap", href: "/sitemap.xml" },
     { label: m.nav_policy(), href: "/privacy-policy" },
   ]
@@ -32,8 +32,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3 sm:items-start">
         <div>
           <Link
-            to="."
-            hash="top"
+            to="/"
             className="font-display text-sm font-bold tracking-[0.28em] uppercase"
           >
             {SITE_NAME}

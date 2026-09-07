@@ -12,10 +12,10 @@ export function NavMobile() {
   const [open, setOpen] = useState(false)
 
   const links = [
-    { href: "#works", label: m.nav_works() },
-    { href: "#services", label: m.nav_services() },
-    { href: "#about", label: m.nav_about() },
-  ]
+    { href: "/works", label: m.nav_works() },
+    { href: "/services", label: m.nav_services() },
+    { href: "/about", label: m.nav_about() },
+  ] as const
 
   return (
     <Sheet
