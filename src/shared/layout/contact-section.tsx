@@ -3,10 +3,10 @@ import React from "react"
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
 import { SITE_EMAIL, SOCIAL_LINKS } from "#/config/app-config"
 import { env } from "#/env"
-import { createContactSchema } from "#/lib/contact-schema"
 import { m } from "#/paraglide/messages"
 import { getLocale } from "#/paraglide/runtime"
 import { ContactForm } from "#/shared/features/contact-form"
+import { createContactSchema } from "../lib/contact-schema"
 import {
   FacebookIcon,
   InstagramIcon,

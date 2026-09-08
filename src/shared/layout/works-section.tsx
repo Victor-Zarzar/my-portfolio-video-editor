@@ -1,19 +1,8 @@
 import { m } from "#/paraglide/messages"
-import work1 from "@/assets/work-1.jpg"
-import work2 from "@/assets/work-2.jpg"
-import work3 from "@/assets/work-3.jpg"
-import work4 from "@/assets/work-4.jpg"
-
-const workImages = [work1, work2, work3, work4]
-const workYears = ["2026", "2025", "2025", "2024"]
+import { getWorks, workImages, workYears } from "#/shared/data/works-data"
 
 export function WorksSection() {
-  const works = [
-    { title: m.works_item_1_title(), kind: m.works_item_1_kind() },
-    { title: m.works_item_2_title(), kind: m.works_item_2_kind() },
-    { title: m.works_item_3_title(), kind: m.works_item_3_kind() },
-    { title: m.works_item_4_title(), kind: m.works_item_4_kind() },
-  ]
+  const works = getWorks()
 
   return (
     <section
@@ -31,7 +20,6 @@ export function WorksSection() {
           {m.works_range()}
         </span>
       </div>
-
       <div className="mt-14 grid gap-6 sm:grid-cols-2">
         {works.map((w, i) => (
           <article

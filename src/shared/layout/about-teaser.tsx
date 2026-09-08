@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router"
 import { m } from "#/paraglide/messages"
 
-const tools = [
+const software = [
   "Final Cut Pro",
   "DaVinci Resolve",
   "VN Editor",
@@ -10,6 +10,7 @@ const tools = [
   "Luna DAW",
   "Moises AI",
 ]
+const systems = ["macOS", "Ubuntu Studio"]
 
 export function AboutTeaser() {
   return (
@@ -36,18 +37,31 @@ export function AboutTeaser() {
             <span aria-hidden="true">→</span>
           </Link>
         </div>
-
         <div>
           <span className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
             {m.about_teaser_tools_label()}
           </span>
           <div className="mt-4 flex flex-wrap gap-2">
-            {tools.map((tool) => (
+            {software.map((tool) => (
               <span
                 key={tool}
                 className="border border-border/60 px-3 py-1.5 text-xs text-foreground transition-colors hover:border-gold/60 hover:text-gold"
               >
                 {tool}
+              </span>
+            ))}
+          </div>
+
+          <span className="mt-6 block text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+            {m.about_teaser_systems_label()}
+          </span>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {systems.map((system) => (
+              <span
+                key={system}
+                className="border border-border/60 px-3 py-1.5 text-xs text-foreground transition-colors hover:border-gold/60 hover:text-gold"
+              >
+                {system}
               </span>
             ))}
           </div>

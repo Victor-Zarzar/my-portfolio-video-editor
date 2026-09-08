@@ -45,19 +45,18 @@ export function NavMobile() {
         </span>
         <nav className="mt-10 flex flex-col gap-6">
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               onClick={() => setOpen(false)}
               className="text-sm tracking-[0.18em] uppercase text-muted-foreground transition-colors hover:text-gold"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <Link
-          to="."
-          hash="contact"
+          to="/contact"
           onClick={() => setOpen(false)}
           className="mt-10 inline-block border border-gold/60 px-4 py-2 text-[0.65rem] font-semibold tracking-[0.22em] uppercase text-gold transition-colors hover:bg-gold hover:text-primary-foreground"
         >

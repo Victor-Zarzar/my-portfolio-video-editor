@@ -2,6 +2,7 @@ import { Button } from "@base-ui/react/button"
 import { type QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import {
   createRootRouteWithContext,
+  type ErrorComponentProps,
   HeadContent,
   Link,
   Outlet,
@@ -10,7 +11,6 @@ import {
 } from "@tanstack/react-router"
 import { type ReactNode, useEffect } from "react"
 import { SEO_CONFIG, SITE_NAME, SITE_URL } from "#/config/app-config"
-import { reportAppError } from "#/lib/error-reporting"
 import { m } from "#/paraglide/messages"
 import { ThemeProvider } from "#/shared/common/theme-provider.tsx"
 import {
@@ -19,6 +19,7 @@ import {
 } from "#/shared/features/cookie-consent.tsx"
 import { DevToolsGuard } from "#/shared/guard/dev-tools-guard"
 import { GA_MEASUREMENT_ID } from "#/shared/lib/analytics.js"
+import { reportAppError } from "#/shared/lib/error-reporting.js"
 import { Toaster } from "#/shared/ui/sonner"
 import { getLocale } from "../paraglide/runtime.js"
 import appCss from "../styles.css?url"
@@ -49,7 +50,7 @@ function NotFoundComponent() {
   )
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error)
   const router = useRouter()
   useEffect(() => {

@@ -1,36 +1,6 @@
 import { Link } from "@tanstack/react-router"
 import { m } from "#/paraglide/messages"
-
-const sections = [
-  {
-    title: m.privacy_policy_information_collected_title(),
-    text: m.privacy_policy_information_collected_description(),
-  },
-  {
-    title: m.privacy_policy_how_we_use_title(),
-    text: m.privacy_policy_how_we_use_description(),
-  },
-  {
-    title: m.privacy_policy_data_sharing_title(),
-    text: m.privacy_policy_data_sharing_description(),
-  },
-  {
-    title: m.privacy_policy_cookies_title(),
-    text: m.privacy_policy_cookies_description(),
-  },
-  {
-    title: m.privacy_policy_rights_title(),
-    text: m.privacy_policy_rights_description(),
-  },
-  {
-    title: m.privacy_policy_changes_title(),
-    text: m.privacy_policy_changes_description(),
-  },
-  {
-    title: m.privacy_policy_contact_title(),
-    text: m.privacy_policy_contact_description(),
-  },
-]
+import { sectionsPolicy } from "#/shared/data/privacy-policy-data"
 
 export function PrivacyPolicySection() {
   return (
@@ -47,9 +17,8 @@ export function PrivacyPolicySection() {
             {m.privacy_policy_h2()}
           </p>
         </div>
-
         <div className="mt-12 space-y-8">
-          {sections.map((section) => (
+          {sectionsPolicy.map((section) => (
             <section key={section.title}>
               <h3 className="text-base font-semibold text-foreground">
                 {section.title}
@@ -60,7 +29,6 @@ export function PrivacyPolicySection() {
             </section>
           ))}
         </div>
-
         <div className="mt-12 text-center">
           <Link
             to="/"

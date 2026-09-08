@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router"
 import { m } from "#/paraglide/messages"
 import heroImg from "@/assets/hero.jpg"
 
@@ -23,12 +24,12 @@ export function HeroSection() {
           {m.hero_text()}
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-6">
-          <a
-            href="#works"
+          <Link
+            to="/works"
             className="bg-gold px-7 py-3.5 text-xs font-semibold tracking-[0.22em] uppercase text-primary-foreground transition-opacity hover:opacity-85"
           >
             {m.hero_cta()}
-          </a>
+          </Link>
           <span className="text-xs tracking-[0.18em] uppercase text-muted-foreground">
             {m.hero_note()}
           </span>

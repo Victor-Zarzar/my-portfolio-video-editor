@@ -1,4 +1,4 @@
-import type { ContactSchema } from "#/lib/contact-schema"
+import type { ContactSchema } from "../lib/contact-schema"
 
 export type RouteNode = {
   fullPath?: string
