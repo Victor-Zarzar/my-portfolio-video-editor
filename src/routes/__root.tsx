@@ -10,7 +10,6 @@ import {
 } from "@tanstack/react-router"
 import { type ReactNode, useEffect } from "react"
 import { SEO_CONFIG, SITE_NAME, SITE_URL } from "#/config/app-config"
-import { GA_MEASUREMENT_ID } from "#/lib/analytics"
 import { reportAppError } from "#/lib/error-reporting"
 import { m } from "#/paraglide/messages"
 import { ThemeProvider } from "#/shared/common/theme-provider.tsx"
@@ -19,6 +18,7 @@ import {
   getCookieConsentFn,
 } from "#/shared/features/cookie-consent.tsx"
 import { DevToolsGuard } from "#/shared/guard/dev-tools-guard"
+import { GA_MEASUREMENT_ID } from "#/shared/lib/analytics.js"
 import { Toaster } from "#/shared/ui/sonner"
 import { getLocale } from "../paraglide/runtime.js"
 import appCss from "../styles.css?url"

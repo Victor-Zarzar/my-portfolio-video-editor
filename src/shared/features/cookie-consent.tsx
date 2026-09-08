@@ -2,12 +2,12 @@ import { Link } from "@tanstack/react-router"
 import { createServerFn } from "@tanstack/react-start"
 import { getCookie, setCookie } from "@tanstack/react-start/server"
 import { useEffect, useState } from "react"
+import { m } from "#/paraglide/messages"
 import {
   GA_MEASUREMENT_ID,
   loadGoogleAnalytics,
   removeGoogleAnalytics,
-} from "#/lib/analytics"
-import { m } from "#/paraglide/messages"
+} from "../lib/analytics"
 import type { CookieConsentValue } from "../types/main"
 
 const COOKIE_NAME = "cookie_consent"
