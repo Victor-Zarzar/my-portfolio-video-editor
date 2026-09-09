@@ -1,15 +1,18 @@
 import { Link } from "@tanstack/react-router"
 import { m } from "#/paraglide/messages"
 import heroImg from "@/assets/hero.jpg"
+import { Image } from "../features/image-hero"
 
 export function HeroSection() {
   return (
     <section className="relative grain-overlay flex min-h-screen items-end overflow-hidden">
-      <img
+      <Image
         src={heroImg}
         alt={m.hero_alt()}
         width={1920}
         height={1088}
+        priority
+        sizes="100vw"
         className="absolute inset-0 h-full w-full object-cover opacity-70"
       />
       <div className="absolute inset-0 bg-linear-to-t from-background via-background/60 to-background/30" />

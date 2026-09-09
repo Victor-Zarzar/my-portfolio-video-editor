@@ -1,5 +1,6 @@
 import { m } from "#/paraglide/messages"
 import portraitImg from "@/assets/portrait.jpg"
+import { Image } from "../features/image-hero"
 
 export function AboutSection() {
   return (
@@ -8,12 +9,13 @@ export function AboutSection() {
       className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2 md:items-center"
     >
       <div className="grain-overlay">
-        <img
+        <Image
           src={portraitImg}
           alt={m.about_portrait_alt()}
-          loading="lazy"
-          width={1024}
-          height={1280}
+          width={1920}
+          height={1080}
+          priority
+          sizes="100vw"
           className="w-full border border-gold/20 object-cover"
         />
       </div>

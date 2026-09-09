@@ -1,12 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router"
 import { motion, type Variants } from "motion/react"
+import { m } from "#/paraglide/messages"
 import { AboutTeaser } from "#/shared/layout/about-teaser"
 import { ContactTeaser } from "#/shared/layout/contact-teaser"
 import { HeroSection } from "#/shared/layout/hero-section"
 import { ServicesTeaser } from "#/shared/layout/services-teaser"
 import { WorksTeaser } from "#/shared/layout/works-teaser"
+import { pageSeo } from "#/shared/lib/seo"
+import heroImg from "@/assets/hero.jpg"
 
 export const Route = createFileRoute("/_marketing/")({
+  head: () => ({
+    meta: pageSeo({
+      title: m.seo_title(),
+      description: m.seo_description(),
+    }),
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: heroImg,
+        fetchPriority: "high",
+      },
+    ],
+  }),
   component: App,
 })
 
