@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import React from "react"
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
 import { SITE_EMAIL, SOCIAL_LINKS } from "#/config/app-config"
