@@ -16,8 +16,8 @@ export const SITE_URL = env.VITE_APP_URL
 
 export const SEO_CONFIG = {
   images: {
-    ogImage: "/og.jpg",
-    logo: "/logo.svg",
+    ogImage: "/og.png",
+    logo: "/logo.png",
   },
   robots: {
     meta: "index, follow",

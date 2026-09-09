@@ -8,6 +8,7 @@ import { getLocale } from "#/paraglide/runtime"
 import { ContactForm } from "#/shared/features/contact-form"
 import { createContactSchema } from "../lib/contact-schema"
 import {
+  EmailIcon,
   FacebookIcon,
   InstagramIcon,
   VimeoIcon,
@@ -38,6 +39,12 @@ const SOCIAL_ITEMS = [
     href: SOCIAL_LINKS.youtube,
     label: "YouTube",
     icon: YoutubeIcon,
+  },
+  {
+    key: "email",
+    href: `mailto:${SITE_EMAIL}`,
+    label: "Email",
+    icon: EmailIcon,
   },
 ] as const
 
@@ -116,20 +123,6 @@ export function ContactSection() {
                     </a>
                   </li>
                 ))}
-
-                <li>
-                  <a
-                    href={`mailto:${SITE_EMAIL}`}
-                    className="group flex items-center justify-between py-3 text-sm text-neutral-600 transition hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
-                  >
-                    <span className="flex items-center gap-2">
-                      <Mail className="size-4 text-neutral-600 transition hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white" />
-                      Email
-                    </span>
-
-                    <ArrowUpRight className="size-4 text-neutral-600 transition group-hover:text-gold-400" />
-                  </a>
-                </li>
               </ul>
             </div>
 

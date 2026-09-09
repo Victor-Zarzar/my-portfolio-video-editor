@@ -95,3 +95,25 @@ export function YoutubeIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
+
+export function EmailIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      aria-hidden="true"
+      {...props}
+    >
+      <rect
+        x="3"
+        y="5"
+        width="18"
+        height="14"
+        rx="3"
+      />
+      <path d="M4 7.5l7.3 5.4a1.2 1.2 0 0 0 1.4 0L20 7.5" />
+    </svg>
+  )
+}

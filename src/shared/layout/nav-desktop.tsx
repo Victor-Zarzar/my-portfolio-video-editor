@@ -5,13 +5,13 @@ import { LanguageSwitcher } from "#/shared/common/language-switcher.tsx"
 import { ModeToggle } from "../common/mode-toggle"
 import { NavMobile } from "./nav-mobile"
 
-const navLinks = [
-  { label: m.nav_works(), href: "/works" },
-  { label: m.nav_services(), href: "/services" },
-  { label: m.nav_about(), href: "/about" },
-] as const
-
 export function Navbar() {
+  const navLinks = [
+    { label: m.nav_works(), href: "/works" },
+    { label: m.nav_services(), href: "/services" },
+    { label: m.nav_about(), href: "/about" },
+  ] as const
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-2xl dark:bg-background dark:backdrop-blur-none">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">

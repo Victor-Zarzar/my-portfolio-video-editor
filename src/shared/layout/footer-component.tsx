@@ -8,15 +8,15 @@ import {
   YoutubeIcon,
 } from "#/shared/layout/social-icons.tsx"
 
-const socialItems = [
-  { label: "Instagram", href: SOCIAL_LINKS.instagram, Icon: InstagramIcon },
-  { label: "Facebook", href: SOCIAL_LINKS.facebook, Icon: FacebookIcon },
-  { label: "Vimeo", href: SOCIAL_LINKS.vimeo, Icon: VimeoIcon },
-  { label: "YouTube", href: SOCIAL_LINKS.youtube, Icon: YoutubeIcon },
-]
-
 export function Footer() {
   const year = new Date().getFullYear()
+
+  const socialItems = [
+    { label: "Instagram", href: SOCIAL_LINKS.instagram, Icon: InstagramIcon },
+    { label: "Facebook", href: SOCIAL_LINKS.facebook, Icon: FacebookIcon },
+    { label: "Vimeo", href: SOCIAL_LINKS.vimeo, Icon: VimeoIcon },
+    { label: "YouTube", href: SOCIAL_LINKS.youtube, Icon: YoutubeIcon },
+  ]
 
   const navItems = [
     { label: m.nav_works(), href: "/works" },
