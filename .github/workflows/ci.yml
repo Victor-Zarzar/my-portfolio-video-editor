@@ -56,9 +56,6 @@ jobs:
       - name: Setup project
         uses: ./.github/actions/setup-project
 
-      - name: Typegen
-        run: bun run typegen
-
       - name: Typecheck
         run: bun run typecheck
 

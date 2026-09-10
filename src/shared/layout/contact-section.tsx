@@ -1,8 +1,6 @@
 import { ArrowUpRight } from "lucide-react"
 import React from "react"
-import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
 import { SITE_EMAIL, SOCIAL_LINKS } from "#/config/app-config"
-import { env } from "#/env"
 import { m } from "#/paraglide/messages"
 import { getLocale } from "#/paraglide/runtime"
 import { ContactForm } from "#/shared/features/contact-form"
@@ -83,24 +81,21 @@ export function ContactSection() {
         </div>
 
         <div className="mt-14 grid gap-10 text-left lg:grid-cols-[1.4fr_1fr]">
-          <GoogleReCaptchaProvider reCaptchaKey={env.VITE_RECAPTCHA_SITE_KEY}>
-            <ContactForm
-              schema={schema}
-              labels={{
-                name: m.contact_form_name(),
-                namePlaceholder: m.contact_form_name_placeholder(),
-                email: m.contact_form_email(),
-                emailPlaceholder: m.contact_form_email_placeholder(),
-                message: m.contact_form_message(),
-                messagePlaceholder: m.contact_form_message_placeholder(),
-                submit: m.contact_form_submit(),
-                sending: m.contact_form_sending(),
-                success: m.contact_form_success(),
-                error: m.contact_form_error(),
-              }}
-            />
-          </GoogleReCaptchaProvider>
-
+          <ContactForm
+            schema={schema}
+            labels={{
+              name: m.contact_form_name(),
+              namePlaceholder: m.contact_form_name_placeholder(),
+              email: m.contact_form_email(),
+              emailPlaceholder: m.contact_form_email_placeholder(),
+              message: m.contact_form_message(),
+              messagePlaceholder: m.contact_form_message_placeholder(),
+              submit: m.contact_form_submit(),
+              sending: m.contact_form_sending(),
+              success: m.contact_form_success(),
+              error: m.contact_form_error(),
+            }}
+          />
           <aside className="flex flex-col gap-8">
             <div>
               <p className="eyebrow">{m.contact_find_me()}</p>

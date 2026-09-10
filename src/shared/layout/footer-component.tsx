@@ -46,15 +46,25 @@ export function Footer() {
           aria-label="Footer"
           className="flex flex-wrap gap-x-8 gap-y-3 text-xs tracking-[0.18em] uppercase text-muted-foreground sm:justify-center"
         >
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              className="transition-colors hover:text-gold"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            item.href.endsWith(".xml") ? (
+              <a
+                key={item.href}
+                href={item.href}
+                className="transition-colors hover:text-gold"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                to={item.href}
+                className="transition-colors hover:text-gold"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <div className="flex items-center gap-3 sm:justify-end">
