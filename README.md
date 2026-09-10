@@ -1,207 +1,244 @@
-Welcome to your new TanStack Start app!
+<h1 align="center" id="header">
+    My Portfolio Video Editor
+</h1>
 
-# Getting Started
+<p align="center">
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS">
+  <img src="https://img.shields.io/badge/React-000000?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/TanStack_Start-EF4444?style=for-the-badge&logo=react&logoColor=white" alt="TanStack Start">
+  <img src="https://img.shields.io/badge/Bun-000000?style=for-the-badge&logo=bun&logoColor=white" alt="Bun">
+  <img src="https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white" alt="Zod">
+  <img src="https://img.shields.io/badge/Biome-60A5FA?style=for-the-badge&logo=biome&logoColor=white" alt="Biome">
+  <img src="https://img.shields.io/badge/Sentry-362D59?style=for-the-badge&logo=sentry&logoColor=white" alt="Sentry">
+  <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify">
+</p>
 
-To run this application:
+<p align="center">
+  Video editor web application built with TanStack Start, TanStack Router, React 19,
+  TypeScript, Vite, and Tailwind CSS v4 — with internationalization, accessible UI
+  components, rate limiting, and bot protection.
+</p>
+
+---
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+- [Tech Stack](#stack)
+- [Prerequisites](#prerequisites)
+- [Installation & Setup](#installation)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Screenshots](#screenshots)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+
+---
+
+<h2 id="stack">Tech Stack</h2>
+
+<p>
+<img src="https://github.com/tandpfun/skill-icons/blob/main/icons/HTML.svg" width="48" title="HTML5">
+<img src="https://github.com/tandpfun/skill-icons/blob/main/icons/TailwindCSS-Dark.svg" width="48" title="TailwindCSS">
+<img src="https://github.com/tandpfun/skill-icons/blob/main/icons/React-Dark.svg" width="48" title="React.js">
+<img src="https://github.com/tandpfun/skill-icons/blob/main/icons/TypeScript.svg" width="48" title="TypeScript">
+<img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Vite-Dark.svg" width="48" title="Vite">
+<img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Netlify-Dark.svg" width="48" title="Netlify">
+<img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Sentry.svg" width="48" title="Sentry">
+</p>
+
+### Core Technologies
+
+- **TypeScript** - Type-safe development
+- **React 19** - Latest React features
+- **TanStack Start** - Full-stack React framework
+- **TanStack Router** - Type-safe, file-based routing
+- **Vite** - Next-generation frontend tooling
+- **Tailwind CSS v4** - Utility-first CSS framework
+- **Bun** - Primary runtime, package manager & test runner
+
+### Features & Integrations
+
+- **TanStack Query** - Async state management and data fetching
+- **TanStack Pacer** - Debouncing, throttling and rate control utilities
+- **Base UI + Shadcn** - Accessible, unstyled-first component primitives
+- **Motion** - Animations and transitions
+- **Embla Carousel** - Lightweight carousel component
+- **cmdk** - Command menu / palette
+- **input-otp** - OTP input component
+- **Sonner** - Toast notifications
+- **Google reCAPTCHA v3** - Invisible bot protection via react-google-recaptcha-v3
+- **Rate Limiter Flexible** - API endpoint rate limiting and DDoS protection
+- **Zod** - Schema validation
+- **T3 Env** - Type-safe environment variable validation
+- **Paraglide JS (Inlang)** - Internationalization / i18n
+- **Sentry** - Error tracking and performance monitoring
+- **Biome** - Linting and formatting
+- **Netlify** - Hosting and deployment
+
+---
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+Before starting, ensure you have the following installed:
+
+- [Bun](https://bun.sh/docs) (v1 or higher) – primary runtime & package manager
+- [Git](https://git-scm.com/)
+
+> Optional: [Node.js](https://nodejs.org/) (LTS or higher), if you prefer running the app with Node or using Node-based global tooling.
+
+---
+
+<h2 id="installation">Installation & Setup</h2>
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Victor-Zarzar/my-portfolio-video-editor
+cd my-portfolio-video-editor
+```
+
+### 2. Open in your editor (example: Zed Editor)
+
+```bash
+zed .
+```
+
+### 3. Install Dependencies
 
 ```bash
 bun install
-bun --bun run dev
 ```
 
-# Building For Production
+### 4. Environment Configuration
 
-To build this application for production:
+Copy the example environment file and configure your credentials:
 
 ```bash
-bun --bun run build
+cp .env-example .env
 ```
 
-## Styling
+Then edit `.env` with your actual values. The `.env-example` file contains detailed comments explaining each variable and how to obtain the necessary credentials.
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+**Key configurations needed:**
 
-### Removing Tailwind CSS
+- **Sentry**: DSN and authentication token from your [Sentry project](https://sentry.io/)
+- **reCAPTCHA**: Site key and secret key from [Google reCAPTCHA](https://www.google.com/recaptcha/admin)
+- **Website URL**: Your production domain or `http://localhost:3000` for development
 
-If you prefer not to use Tailwind CSS:
+> **Important:** Never commit your `.env` file to version control. It's already in `.gitignore`.
 
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Remove `@tailwindcss/vite` and `tailwindcss` from `package.json`
-
-## Linting & Formatting
-
-This project uses [Biome](https://biomejs.dev/) for linting and formatting. The following scripts are available:
-
+### 5. Run the Application
 
 ```bash
-bun --bun run lint
-bun --bun run format
-bun --bun run check
+bun run dev
 ```
 
+Access the application at `http://localhost:3000`
 
-## Deploy to Netlify
+---
 
-This project ships with `netlify.toml` configured for a Netlify site:
+<h2 id="usage">Usage</h2>
 
-1. Push this repo to GitHub
-2. Visit https://app.netlify.com/start and import the repo
-3. Netlify auto-detects the build (`vite build` → `dist/client`)
-4. Open **Site settings → Environment variables** and add anything from `.env.example` that needs a real value in production
-5. Trigger the first deploy
+### Available Scripts
 
-Server functions and API routes run on Netlify Functions. For lower-latency request handling, see Netlify Edge Functions: https://docs.netlify.com/edge-functions/overview.
+| Command                   | Description                                  |
+| ------------------------- | -------------------------------------------- |
+| `bun run dev`             | Start the development server (port 3000)     |
+| `bun run build`           | Build the application for production         |
+| `bun run preview`         | Preview the production build locally         |
+| `bun run generate-routes` | Generate TanStack Router route tree          |
+| `bun run typegen`         | Generate types (alias for `generate-routes`) |
+| `bun run typecheck`       | Run TypeScript type checking                 |
+| `bun run check`           | Run typecheck + lint + typegen               |
+| `bun run lint`            | Check code quality with Biome                |
+| `bun run lint:fix`        | Auto-fix lint issues with Biome              |
+| `bun run format`          | Format code with Biome                       |
+| `bun run clean`           | Remove build artifacts, caches and reports   |
+| `bun run update-deps`     | Update dependencies within semver range      |
+| `bun run update-latest`   | Update dependencies to their latest versions |
 
+### Code Quality Check
 
+Before starting development, run the checks to ensure code quality:
 
-## Routing
-
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
-
-```tsx
-import { Link } from "@tanstack/react-router";
+```bash
+bun run check
 ```
 
-Then anywhere in your JSX you can use it like so:
+---
 
-```tsx
-<Link to="/about">About</Link>
+<h2 id="testing">Testing</h2>
+
+This project uses Bun's built-in test runner with React Testing Library:
+
+```bash
+bun run test:unit
 ```
 
-This will create a link that will navigate to the `/about` route.
+Add your tests in the `tests/units` directory or colocate them with your components.
 
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
+---
 
-### Using A Layout
+<h2 id="screenshots">Screenshots</h2>
 
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
+<p align="center">
+  <em>Screenshots coming soon.</em>
+</p>
 
-Here is an example layout that includes a header:
+---
 
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+<h2 id="deployment">Deployment</h2>
 
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
+### Netlify (Recommended - Production)
+
+The application is deployed on Netlify.
+
+First, install the Netlify CLI (only needed once):
+
+```bash
+bun run install:netlifycli
 ```
 
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
+Then deploy:
 
-## Server Functions
-
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
-
-```tsx
-import { createServerFn } from '@tanstack/react-start'
-
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
-
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
+```bash
+bun run deploy:dev    # Deploy a preview/draft build
+bun run deploy:prod   # Deploy to production
 ```
 
-## API Routes
+**Important:** Don't forget to add all environment variables from `.env-example` to your Netlify project settings.
 
-You can create API routes by using the `server` property in your route definitions:
+- **CI/CD Pipeline** - `.github/workflows/` for automated checks and releases
+- **Dependabot** - Monthly dependency updates for GitHub Actions and packages
 
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
+---
 
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
+<h2 id="contributing">Contributing</h2>
 
-## Data Fetching
+1. Fork the project
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
 
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
+Report issues at: https://github.com/Victor-Zarzar/my-portfolio-video-editor/issues
 
-For example:
+---
 
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
+<h2 id="license">License</h2>
 
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-function PeopleComponent() {
-  const data = Route.useLoaderData()
-  return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
+---
 
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
+<h2 id="author">Author</h2>
 
+Victor Zarzar - [@Victor-Zarzar](https://github.com/Victor-Zarzar)
 
+Project Link: [https://github.com/Victor-Zarzar/my-portfolio-video-editor](https://github.com/Victor-Zarzar/my-portfolio-video-editor)
 
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
-
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
+---

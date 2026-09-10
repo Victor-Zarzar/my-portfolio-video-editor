@@ -34,12 +34,12 @@ export const sendContactMessage = createServerFn({ method: "POST" })
     try {
       await rateLimiter.consume(ip)
     } catch {
-      throw new Error("Muitas tentativas. Tente novamente em instantes.")
+      throw new Error("Too many attempts. Please try again shortly.")
     }
 
     const captchaOk = await verifyCaptcha(data.captchaToken)
     if (!captchaOk) {
-      throw new Error("Falha na verificação do captcha.")
+      throw new Error("Captcha verification failed.")
     }
 
     const sanitizedName = escapeHtml(data.name)
@@ -59,7 +59,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
 
     const failed = results.filter((r) => r.status === "rejected")
     if (failed.length === results.length) {
-      throw new Error("Falha ao enviar mensagem")
+      throw new Error("Failed to send message")
     }
 
     return { ok: true }

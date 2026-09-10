@@ -47,13 +47,13 @@ export function Footer() {
           className="flex flex-wrap gap-x-8 gap-y-3 text-xs tracking-[0.18em] uppercase text-muted-foreground sm:justify-center"
         >
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              to={item.href}
               className="transition-colors hover:text-gold"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
