@@ -95,6 +95,7 @@ export function ContactForm({ schema, labels }: ContactFormProps) {
           <Input
             id="name"
             name="name"
+            autoComplete="name"
             placeholder={labels.namePlaceholder}
             value={form.name}
             onChange={handleChange}
@@ -108,6 +109,7 @@ export function ContactForm({ schema, labels }: ContactFormProps) {
             id="email"
             name="email"
             type="email"
+            autoComplete="email"
             placeholder={labels.emailPlaceholder}
             value={form.email}
             onChange={handleChange}
