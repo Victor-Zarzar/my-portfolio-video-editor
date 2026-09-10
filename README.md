@@ -186,7 +186,7 @@ Add your tests in the `tests/units` directory or colocate them with your compone
 <h2 id="screenshots">Screenshots</h2>
 
 <p align="center">
-  <em>Screenshots coming soon.</em>
+  <img width="1908" height="954" alt="og" src="https://github.com/user-attachments/assets/f9703e9a-60c8-42ac-9c0f-6167b5169d2f" />
 </p>
 
 ---
