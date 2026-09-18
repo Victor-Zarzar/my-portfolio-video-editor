@@ -7,6 +7,7 @@ import { routeTree } from "@/routeTree.gen"
 const ROUTE_BLACKLIST = new Set<string>([
   "/unauthorized", // error page
   "/privacy-policy",
+  "/terms-of-service",
 ])
 
 export const Route = createFileRoute("/sitemap.xml")({

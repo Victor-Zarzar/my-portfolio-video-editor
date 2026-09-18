@@ -29,8 +29,8 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border/60">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3 sm:items-start">
-        <div>
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="flex flex-col">
           <Link
             to="/"
             className="font-display text-sm font-bold tracking-[0.28em] uppercase"
@@ -40,11 +40,32 @@ export function Footer() {
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
             {m.footer_tagline()}
           </p>
+
+          <div className="mt-8 space-y-1 text-xs tracking-[0.16em] uppercase text-muted-foreground">
+            <p>
+              © {year} {SITE_NAME}. {m.footer_rights_reserved()}
+            </p>
+            <p className="flex items-center gap-2 normal-case tracking-normal">
+              <Link
+                to="/privacy-policy"
+                className="transition-colors hover:text-gold"
+              >
+                {m.nav_policy()}
+              </Link>
+              <span aria-hidden="true">·</span>
+              <Link
+                to="/terms-of-service"
+                className="transition-colors hover:text-gold"
+              >
+                {m.footer_terms_of_service()}
+              </Link>
+            </p>
+          </div>
         </div>
 
         <nav
           aria-label="Footer"
-          className="flex flex-wrap gap-x-8 gap-y-3 text-xs tracking-[0.18em] uppercase text-muted-foreground sm:justify-center"
+          className="flex flex-col gap-3 border-border/60 text-sm text-muted-foreground sm:items-start sm:border-l sm:pl-10"
         >
           {navItems.map((item) =>
             item.href.endsWith(".xml") ? (
@@ -67,28 +88,24 @@ export function Footer() {
           )}
         </nav>
 
-        <div className="flex items-center gap-3 sm:justify-end">
-          {socialItems.map(({ label, href, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="flex h-9 w-9 items-center justify-center border border-border/60 text-muted-foreground transition-colors hover:border-gold/60 hover:text-gold"
-            >
-              <Icon className="h-4 w-4" />
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <div className="border-t border-border/60">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-6 text-xs tracking-[0.16em] uppercase text-muted-foreground sm:flex-row">
-          <span>
-            © {year} {SITE_NAME}.
+        <div className="flex flex-col gap-4 border-border/60 sm:items-start sm:border-l sm:pl-10">
+          <span className="text-xs font-semibold tracking-[0.24em] uppercase text-muted-foreground">
+            {m.footer_social_media()}
           </span>
-          <span>{m.footer_rights_reserved()}</span>
+          <div className="flex items-center gap-3">
+            {socialItems.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="flex h-9 w-9 items-center justify-center rounded-md border border-border/60 text-muted-foreground transition-colors hover:border-gold/60 hover:text-gold"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

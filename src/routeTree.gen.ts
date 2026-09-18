@@ -18,6 +18,7 @@ import { Route as MarketingAboutRouteImport } from './routes/_marketing/about'
 import { Route as MarketingContactRouteImport } from './routes/_marketing/contact'
 import { Route as MarketingPrivacyPolicyRouteImport } from './routes/_marketing/privacy-policy'
 import { Route as MarketingServicesRouteImport } from './routes/_marketing/services'
+import { Route as MarketingTermsOfServiceRouteImport } from './routes/_marketing/terms-of-service'
 import { Route as MarketingWorksRouteImport } from './routes/_marketing/works'
 
 const MarketingRoute = MarketingRouteImport.update({
@@ -64,6 +65,11 @@ const MarketingServicesRoute = MarketingServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => MarketingRoute,
 } as any)
+const MarketingTermsOfServiceRoute = MarketingTermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => MarketingRoute,
+} as any)
 const MarketingWorksRoute = MarketingWorksRouteImport.update({
   id: '/works',
   path: '/works',
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof MarketingContactRoute
   '/privacy-policy': typeof MarketingPrivacyPolicyRoute
   '/services': typeof MarketingServicesRoute
+  '/terms-of-service': typeof MarketingTermsOfServiceRoute
   '/works': typeof MarketingWorksRoute
 }
 export interface FileRoutesByTo {
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/contact': typeof MarketingContactRoute
   '/privacy-policy': typeof MarketingPrivacyPolicyRoute
   '/services': typeof MarketingServicesRoute
+  '/terms-of-service': typeof MarketingTermsOfServiceRoute
   '/works': typeof MarketingWorksRoute
   '/': typeof MarketingIndexRoute
 }
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/_marketing/contact': typeof MarketingContactRoute
   '/_marketing/privacy-policy': typeof MarketingPrivacyPolicyRoute
   '/_marketing/services': typeof MarketingServicesRoute
+  '/_marketing/terms-of-service': typeof MarketingTermsOfServiceRoute
   '/_marketing/works': typeof MarketingWorksRoute
   '/_marketing/': typeof MarketingIndexRoute
 }
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/privacy-policy'
     | '/services'
+    | '/terms-of-service'
     | '/works'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/privacy-policy'
     | '/services'
+    | '/terms-of-service'
     | '/works'
     | '/'
   id:
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '/_marketing/contact'
     | '/_marketing/privacy-policy'
     | '/_marketing/services'
+    | '/_marketing/terms-of-service'
     | '/_marketing/works'
     | '/_marketing/'
   fileRoutesById: FileRoutesById
@@ -214,6 +226,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketingServicesRouteImport
       parentRoute: typeof MarketingRoute
     }
+    '/_marketing/terms-of-service': {
+      id: '/_marketing/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof MarketingTermsOfServiceRouteImport
+      parentRoute: typeof MarketingRoute
+    }
     '/_marketing/works': {
       id: '/_marketing/works'
       path: '/works'
@@ -229,6 +248,7 @@ interface MarketingRouteChildren {
   MarketingContactRoute: typeof MarketingContactRoute
   MarketingPrivacyPolicyRoute: typeof MarketingPrivacyPolicyRoute
   MarketingServicesRoute: typeof MarketingServicesRoute
+  MarketingTermsOfServiceRoute: typeof MarketingTermsOfServiceRoute
   MarketingWorksRoute: typeof MarketingWorksRoute
   MarketingIndexRoute: typeof MarketingIndexRoute
 }
@@ -238,6 +258,7 @@ const MarketingRouteChildren: MarketingRouteChildren = {
   MarketingContactRoute: MarketingContactRoute,
   MarketingPrivacyPolicyRoute: MarketingPrivacyPolicyRoute,
   MarketingServicesRoute: MarketingServicesRoute,
+  MarketingTermsOfServiceRoute: MarketingTermsOfServiceRoute,
   MarketingWorksRoute: MarketingWorksRoute,
   MarketingIndexRoute: MarketingIndexRoute,
 }
