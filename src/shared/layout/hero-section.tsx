@@ -5,7 +5,10 @@ import { Image } from "../features/image-hero"
 
 export function HeroSection() {
   return (
-    <section className="relative grain-overlay flex min-h-screen items-end overflow-hidden">
+    <section
+      data-testid="hero"
+      className="relative grain-overlay flex min-h-screen items-end overflow-hidden"
+    >
       <Image
         src={heroImg}
         alt={m.hero_alt()}

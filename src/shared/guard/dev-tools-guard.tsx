@@ -1,5 +1,5 @@
 import { useDisableDevTools } from "#/hooks/use-disable-dev"
-import type { DevToolsGuardProps } from "../types/main"
+import type { DevToolsGuardProps } from "#/shared/types/devtools/dev-tools"
 
 export function DevToolsGuard({
   unauthorizedPath = "/unauthorized",

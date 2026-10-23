@@ -1,4 +1,4 @@
-import type { ImageProps } from "../types/main"
+import type { ImageProps } from "#/shared/types/image/image"
 
 export function Image({
   src,

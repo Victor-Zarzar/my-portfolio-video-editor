@@ -4,7 +4,7 @@ import type {
   Theme,
   ThemeProviderProps,
   ThemeProviderState,
-} from "../types/main"
+} from "#/shared/types/theme/theme"
 
 function getThemeScript(storageKey: string, defaultTheme: Theme) {
   const key = JSON.stringify(storageKey)

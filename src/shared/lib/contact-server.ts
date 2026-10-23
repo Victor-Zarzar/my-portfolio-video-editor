@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start"
 import { getRequest } from "@tanstack/react-start/server"
 import { RateLimiterMemory } from "rate-limiter-flexible"
 import { z } from "zod"
-import { env } from "@/env"
+import { env } from "#/env/server"
 import { escapeHtml } from "./escape-html"
 
 const serverContactSchema = z.object({

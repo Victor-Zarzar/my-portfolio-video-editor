@@ -1,5 +1,5 @@
 import { z } from "zod"
-import type { ContactMessages } from "#/shared/types/main"
+import type { ContactMessages } from "#/shared/types/contact/contact"
 
 export function createContactSchema(messages: ContactMessages) {
   return z.object({

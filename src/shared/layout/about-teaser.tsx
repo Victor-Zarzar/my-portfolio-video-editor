@@ -10,7 +10,7 @@ const software = [
   "Luna DAW",
   "Moises AI",
 ]
-const systems = ["macOS", "Ubuntu Studio"]
+const systems = ["macOS", "Linux"]
 
 export function AboutTeaser() {
   return (

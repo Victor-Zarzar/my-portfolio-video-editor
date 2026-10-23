@@ -1,4 +1,4 @@
-import { env } from "#/env"
+import { env } from "#/env/client"
 
 export const GA_MEASUREMENT_ID = env.VITE_GA_MEASUREMENT_ID as
   | string

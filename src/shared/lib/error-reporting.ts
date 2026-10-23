@@ -1,4 +1,7 @@
-import type { AppErrorOptions, ErrorReportingHooks } from "#/shared/types/main"
+import type {
+  AppErrorOptions,
+  ErrorReportingHooks,
+} from "#/shared/types/apperror/app-error"
 
 declare global {
   interface Window {

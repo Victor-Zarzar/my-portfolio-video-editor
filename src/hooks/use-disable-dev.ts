@@ -1,6 +1,6 @@
 import { useNavigate, useRouterState } from "@tanstack/react-router"
 import { useEffect, useRef } from "react"
-import { env } from "#/env"
+import { env } from "#/env/client"
 
 export function useDisableDevTools(unauthorizedPath = "/unauthorized") {
   const navigate = useNavigate()

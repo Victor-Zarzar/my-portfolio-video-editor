@@ -3,12 +3,12 @@ import { createServerFn } from "@tanstack/react-start"
 import { getCookie, setCookie } from "@tanstack/react-start/server"
 import { useEffect, useState } from "react"
 import { m } from "#/paraglide/messages"
+import type { CookieConsentValue } from "#/shared/types/cookie/cookie"
 import {
   GA_MEASUREMENT_ID,
   loadGoogleAnalytics,
   removeGoogleAnalytics,
 } from "../lib/analytics"
-import type { CookieConsentValue } from "../types/main"
 
 const COOKIE_NAME = "cookie_consent"
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365 // 1 year
@@ -63,7 +63,12 @@ export function CookieConsent({
   }
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-input bg-background/95 px-4 py-4 backdrop-blur supports-backdrop-filter:bg-background/80 dark:bg-background dark:backdrop-blur-none dark:supports-backdrop-filter:bg-background sm:px-6">
+    <div
+      data-testid="cookie-consent"
+      role="dialog"
+      aria-label="Cookie consent"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-input bg-background/95 px-4 py-4 backdrop-blur supports-backdrop-filter:bg-background/80 dark:bg-background dark:backdrop-blur-none dark:supports-backdrop-filter:bg-background sm:px-6"
+    >
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <p className="text-sm text-muted-foreground">
           {m.cookie_consent_message()}{" "}

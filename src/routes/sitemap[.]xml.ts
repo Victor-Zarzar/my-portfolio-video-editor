@@ -5,7 +5,7 @@ import { locales, localizeUrl } from "#/paraglide/runtime"
 import { routeTree } from "@/routeTree.gen"
 
 const ROUTE_BLACKLIST = new Set<string>([
-  "/unauthorized", // error page
+  "/unauthorized",
   "/privacy-policy",
   "/terms-of-service",
 ])
