@@ -1,4 +1,4 @@
-import { env } from "#/env"
+import { env } from "#/env/client"
 
 export const SITE_FIRST_NAME = "Vz"
 export const SITE_LAST_NAME = "Films"

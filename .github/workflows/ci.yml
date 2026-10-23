@@ -1,32 +1,39 @@
 name: CI
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
-    paths-ignore:
-      - "**.md"
-      - "LICENSE"
-      - ".editorconfig"
-      - ".vscode/**"
-      - ".cursor/**"
-      - ".github/**"
-      - "!.github/workflows/**"
-      - "content/**"
-      - "public/**"
+    paths:
+      - "**"
+      - "!**.md"
+      - "!LICENSE"
+      - "!.editorconfig"
+      - "!.vscode/**"
+      - "!.cursor/**"
+      - "!.github/**"
+      - ".github/workflows/**"
+      - ".github/actions/**"
+      - "!content/**"
+      - "!public/**"
+
   pull_request:
     branches: [main]
-    paths-ignore:
-      - "**.md"
-      - "LICENSE"
-      - ".editorconfig"
-      - ".vscode/**"
-      - ".cursor/**"
-      - ".github/**"
-      - "!.github/workflows/**"
-      - "content/**"
-      - "public/**"
+    paths:
+      - "**"
+      - "!**.md"
+      - "!LICENSE"
+      - "!.editorconfig"
+      - "!.vscode/**"
+      - "!.cursor/**"
+      - "!.github/**"
+      - ".github/workflows/**"
+      - ".github/actions/**"
+      - "!content/**"
+      - "!public/**"
 
 env:
+  SKIP_ENV_VALIDATION: "false"
   VITE_APP_URL: "http://localhost:3000"
   VITE_DISABLE_DEVTOOLS: "true"
   VITE_SENTRY_DSN: ${{ secrets.VITE_SENTRY_DSN }}
@@ -48,7 +55,7 @@ jobs:
     name: Bun CI
     runs-on: ubuntu-latest
     env:
-      VITE_APP_URL: https://localhost:3000
+      VITE_APP_URL: http://localhost:3000
     steps:
       - name: Checkout code
         uses: actions/checkout@v7

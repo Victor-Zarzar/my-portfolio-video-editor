@@ -1,0 +1,9 @@
+pre-commit:
+  jobs:
+    - name: check
+      run: bun check:commit
+
+pre-push:
+  jobs:
+    - name: e2e
+      run: make test-e2e

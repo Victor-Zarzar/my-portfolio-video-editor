@@ -3,13 +3,13 @@ import { useMutation } from "@tanstack/react-query"
 import React from "react"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { toast } from "sonner"
+import type { ContactFormProps } from "#/shared/types/contact/contact"
 import { Button } from "#/shared/ui/button"
 import { Input } from "#/shared/ui/input"
 import { Label } from "#/shared/ui/label"
 import { Textarea } from "#/shared/ui/textarea"
 import type { ContactInput } from "../lib/contact-schema"
 import { sendContactMessage } from "../lib/contact-server"
-import type { ContactFormProps } from "../types/main"
 
 const EMPTY_FORM: ContactInput = {
   name: "",

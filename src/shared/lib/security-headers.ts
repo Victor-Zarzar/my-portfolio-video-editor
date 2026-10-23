@@ -1,8 +1,5 @@
 import { createMiddleware } from "@tanstack/react-start"
-import {
-  getResponseHeaders,
-  setResponseHeaders,
-} from "@tanstack/react-start/server"
+import { setResponseHeaders } from "@tanstack/react-start/server"
 
 export const securityHeadersMiddleware = createMiddleware().server(
   ({ next }) => {
@@ -25,20 +22,18 @@ export const securityHeadersMiddleware = createMiddleware().server(
       .replace(/\s{2,}/g, " ")
       .trim()
 
-    const headers = getResponseHeaders()
-    headers.set("Content-Security-Policy", csp)
-    headers.set("X-Frame-Options", "DENY")
-    headers.set("X-Content-Type-Options", "nosniff")
-    headers.set("Referrer-Policy", "strict-origin-when-cross-origin")
-    headers.set(
-      "Permissions-Policy",
-      "camera=(), microphone=(), geolocation=(), browsing-topics=()"
+    setResponseHeaders(
+      new Headers({
+        "Content-Security-Policy": csp,
+        "X-Frame-Options": "DENY",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy":
+          "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+        "Strict-Transport-Security":
+          "max-age=63072000; includeSubDomains; preload",
+      })
     )
-    headers.set(
-      "Strict-Transport-Security",
-      "max-age=63072000; includeSubDomains; preload"
-    )
-    setResponseHeaders(headers)
 
     return next()
   }

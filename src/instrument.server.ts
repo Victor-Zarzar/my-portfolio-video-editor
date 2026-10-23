@@ -1,5 +1,5 @@
 import * as Sentry from "@sentry/tanstackstart-react"
-import { env } from "./env"
+import { env } from "./env/server"
 
 Sentry.init({
   dsn: env.SENTRY_DSN,
@@ -7,6 +7,5 @@ Sentry.init({
     // userInfo: false,
     // httpBodies: [],
   },
-  enableLogs: true,
   tracesSampleRate: 1.0,
 })

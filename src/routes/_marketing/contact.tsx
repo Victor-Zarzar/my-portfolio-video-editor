@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router"
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
-import { env } from "#/env"
+import { env } from "#/env/client"
 import { m } from "#/paraglide/messages"
 import { ContactSection } from "#/shared/layout/contact-section"
 import { pageSeo } from "#/shared/lib/seo"
