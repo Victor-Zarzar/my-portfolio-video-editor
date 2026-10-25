@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite"
 import { tanstackStart } from "@tanstack/react-start/plugin/vite"
 import viteReact from "@vitejs/plugin-react"
 import { defineConfig, loadEnv } from "vite"
+import { imagetools } from "vite-imagetools"
 import { z } from "zod"
 
 const envSchema = z.object({
@@ -28,6 +29,7 @@ export default defineConfig(({ mode }) => {
   envSchema.parse(env)
 
   const basePlugins = [
+    imagetools(),
     netlify({
       dev: { edgeFunctions: { enabled: false } },
     }),

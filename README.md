@@ -32,6 +32,7 @@
 - [Testing](#testing)
 - [Screenshots](#screenshots)
 - [Deployment](#deployment)
+- [Docker](#docker)
 - [Contributing](#contributing)
 - [License](#license)
 - [Author](#author)
@@ -59,6 +60,9 @@
 - **Vite** - Next-generation frontend tooling
 - **Tailwind CSS v4** - Utility-first CSS framework
 - **Bun** - Primary runtime, package manager & test runner
+- **Docker** - Containerized development and isolated E2E testing
+- **Playwright** - End-to-end testing with Chromium
+- **Lefthook** - Git hooks for pre-commit and pre-push checks
 
 ### Features & Integrations
 
@@ -73,7 +77,7 @@
 - **Google reCAPTCHA v3** - Invisible bot protection via react-google-recaptcha-v3
 - **Rate Limiter Flexible** - API endpoint rate limiting and DDoS protection
 - **Zod** - Schema validation
-- **T3 Env** - Type-safe environment variable validation
+- **T3 Env** - Type-safe environment variable validation src/env => client.ts and server.ts
 - **Paraglide JS (Inlang)** - Internationalization / i18n
 - **Sentry** - Error tracking and performance monitoring
 - **Biome** - Linting and formatting
@@ -87,6 +91,8 @@ Before starting, ensure you have the following installed:
 
 - [Bun](https://bun.sh/docs) (v1 or higher) – primary runtime & package manager
 - [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/) – For isolated test runs and containerized development
+- [Make](https://www.gnu.org/software/make/) – Shortcut commands for Docker workflows
 
 > Optional: [Node.js](https://nodejs.org/) (LTS or higher), if you prefer running the app with Node or using Node-based global tooling.
 
@@ -173,13 +179,112 @@ bun run check
 
 <h2 id="testing">Testing</h2>
 
-This project uses Bun's built-in test runner with React Testing Library:
+Unit and integration tests use Bun's built-in test runner with React Testing Library
+and Happy DOM. End-to-end (E2E) tests use [Playwright](https://playwright.dev/) with Chromium.
+
+### Automated (Isolated Docker container) — Recommended
+
+```bash
+make test-unit
+make test-integration
+make test-e2e
+```
+
+#### E2E tests in an isolated container (OS-independent)
+
+`make test-e2e` builds a dedicated image from `Dockerfile.test`
+(`oven/bun` + project dependencies + Playwright Chromium with all system libraries)
+and runs the suite inside it, loading the variables from your `.env` file.
+
+Because the browser and every system dependency live inside the image, the
+results **do not depend on your host operating system**: the same command runs
+the same way on Linux, macOS and Windows, as long as Docker is available.
+Nothing needs to be installed on your machine besides Docker and Make.
+
+> **Windows note:** run `make` from **WSL2** (recommended) or Git Bash with
+> Docker Desktop running. The Makefile uses `$(PWD)` and POSIX shell syntax,
+> which are not available in plain `cmd`/PowerShell.
+
+### Manual with Bun (local machine)
 
 ```bash
 bun run test:unit
+bun run test:integration
+
+make install-e2e     # first time only: installs Playwright browsers locally
+bun run test:e2e
 ```
 
-Add your tests in the `tests/units` directory or colocate them with your components.
+Playwright extras:
+
+```bash
+bun run test:e2e:ui       # Interactive UI mode
+bun run test:e2e:headed   # Run with a visible browser
+bun run test:e2e:debug    # Step-by-step debugging
+bun run test:e2e:report   # Open the last HTML report
+```
+
+> Local E2E runs use your host's browser installation and OS libraries, so
+> results may vary between machines. Use `make test-e2e` for reproducible runs.
+
+Add your tests in the `tests/units` and `tests/integration` directories, or colocate them with your components.
+
+### Git Hooks with Lefthook
+
+This project uses **Lefthook** to run quality checks automatically:
+
+- **Pre-commit** — runs `bun check:commit` (Paraglide compile, typegen, typecheck, lint, unit tests and integration tests).
+- **Pre-push** — runs `make test-e2e`, executing the full E2E suite inside the isolated Docker container.
+
+Hooks are installed automatically with the project dependencies. No manual test command is required before committing or pushing.
+
+---
+
+<h2 id="docker">Docker</h2>
+
+The project ships with two Dockerfiles, each with a distinct purpose:
+
+| File              | Image name                      | Purpose                                                     |
+| ----------------- | ------------------------------- | ----------------------------------------------------------- |
+| `Dockerfile`      | `my-portfolio-video-editor`     | Development and unit/integration tests (Bun + project deps) |
+| `Dockerfile.test` | `my-portfolio-video-editor-e2e` | E2E tests (Bun + Playwright Chromium + system libraries)    |
+
+Images are tagged with the `version` from `package.json`, so each release gets its own tag.
+
+### Docker Commands
+
+| Command                 | Description                                                             |
+| ----------------------- | ----------------------------------------------------------------------- |
+| `make build`            | Build the main Docker image                                             |
+| `make build-e2e`        | Build the E2E image from `Dockerfile.test`                              |
+| `make run`              | Build and run the app in a container (port 3000, hot reload via volume) |
+| `make test-unit`        | Run unit tests in an isolated container                                 |
+| `make test-integration` | Run integration tests in an isolated container                          |
+| `make test-e2e`         | Build the E2E image and run Playwright tests (uses `.env`, `CI=true`)   |
+| `make logs`             | Follow the container logs                                               |
+| `make shell`            | Open a shell inside the running container                               |
+| `make stop`             | Stop and remove the app and E2E containers                              |
+| `make clean`            | Stop containers, remove images and build artifacts                      |
+| `make help`             | List all available commands                                             |
+
+### Running the app with Docker
+
+```bash
+make run
+```
+
+Access the application at `http://localhost:3000`.
+
+The project directory is mounted into the container as a volume, so code changes
+are reflected immediately. `node_modules` and `.netlify` are kept as anonymous
+volumes so the container's dependencies are never overwritten by your host's.
+
+### Cleaning up
+
+```bash
+make stop    # remove running containers
+make clean   # also remove images, node_modules, .netlify, .tanstack, dist, playwright-report and test-results
+```
 
 ---
 

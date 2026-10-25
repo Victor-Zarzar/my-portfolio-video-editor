@@ -1,20 +1,12 @@
 import { Link } from "@tanstack/react-router"
 import { m } from "#/paraglide/messages"
-import { worksData } from "#/shared/data/works-data"
-
-const workMessages = [
-  { title: m.works_item_1_title, kind: m.works_item_1_kind },
-  { title: m.works_item_2_title, kind: m.works_item_2_kind },
-  { title: m.works_item_3_title, kind: m.works_item_3_kind },
-  { title: m.works_item_4_title, kind: m.works_item_4_kind },
-]
+import { getWorks } from "#/shared/data/works-data"
+import { Image } from "../features/image-hero"
 
 const FEATURED_COUNT = 2
 
 export function WorksTeaser() {
-  const featured = worksData
-    .slice(0, FEATURED_COUNT)
-    .map((data, i) => ({ ...data, ...workMessages[i] }))
+  const featured = getWorks().slice(0, FEATURED_COUNT)
 
   return (
     <section className="mx-auto max-w-4xl px-6 py-24">
@@ -30,20 +22,24 @@ export function WorksTeaser() {
       <div className="mt-10 grid gap-6 sm:grid-cols-2">
         {featured.map((work) => (
           <div
-            key={work.title()}
+            key={work.id}
             className="group relative aspect-video overflow-hidden border border-border/60"
           >
-            <img
-              src={work.image}
-              alt={work.title()}
+            <Image
+              src={work.src}
+              srcSet={work.srcSet}
+              sizes="(min-width: 896px) 412px, (min-width: 640px) 50vw, 100vw"
+              alt={work.title}
+              width={1024}
+              height={768}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 flex flex-col justify-end bg-black/40 p-4 opacity-0 transition-opacity group-hover:opacity-100">
               <span className="text-[0.65rem] uppercase tracking-[0.18em] text-gold">
-                {work.year} · {work.kind()}
+                {work.year} · {work.kind}
               </span>
               <span className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-white">
-                {work.title()}
+                {work.title}
               </span>
             </div>
           </div>

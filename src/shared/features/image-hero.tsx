@@ -1,25 +1,21 @@
-import type { ImageProps } from "#/shared/types/image/image"
+import type { ImageProps } from "../types/image/image"
 
 export function Image({
-  src,
-  alt,
-  width,
-  height,
-  className,
   priority = false,
-  sizes = "100vw",
+  sizes,
+  srcSet,
+  alt,
+  ...props
 }: ImageProps) {
   return (
     <img
-      src={src}
+      {...props}
       alt={alt}
-      width={width}
-      height={height}
-      className={className}
+      srcSet={srcSet}
+      sizes={srcSet ? sizes : undefined}
       loading={priority ? "eager" : "lazy"}
       fetchPriority={priority ? "high" : "auto"}
-      decoding={priority ? "sync" : "async"}
-      sizes={sizes}
+      decoding="async"
     />
   )
 }
