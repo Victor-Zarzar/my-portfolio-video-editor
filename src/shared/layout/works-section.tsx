@@ -1,5 +1,6 @@
 import { m } from "#/paraglide/messages"
-import { getWorks, workImages, workYears } from "#/shared/data/works-data"
+import { getWorks } from "#/shared/data/works-data"
+import { Image } from "../features/image-hero"
 
 export function WorksSection() {
   const works = getWorks()
@@ -23,16 +24,18 @@ export function WorksSection() {
       <div className="mt-14 grid gap-6 sm:grid-cols-2">
         {works.map((w, i) => (
           <article
-            key={w.title}
+            key={w.id}
             className="frame-card group overflow-hidden"
           >
             <div className="grain-overlay overflow-hidden">
-              <img
-                src={workImages[i]}
+              <Image
+                src={w.src}
+                srcSet={w.srcSet}
+                sizes="(min-width: 1152px) 540px, (min-width: 640px) 50vw, 100vw"
                 alt={`${m.works_frame_alt()} ${w.title}`}
-                loading="lazy"
                 width={1024}
                 height={768}
+                priority={i < 2}
                 className="aspect-4/3 w-full object-cover opacity-85 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
               />
             </div>
@@ -42,7 +45,7 @@ export function WorksSection() {
                 <p className="mt-1 text-sm text-muted-foreground">{w.kind}</p>
               </div>
               <span className="text-xs tracking-[0.18em] text-gold">
-                {workYears[i]}
+                {w.year}
               </span>
             </div>
           </article>

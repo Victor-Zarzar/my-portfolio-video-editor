@@ -1,5 +1,6 @@
 import { m } from "#/paraglide/messages"
-import portraitImg from "@/assets/portrait.jpg"
+import portraitSrcSet from "@/assets/portrait.jpg?w=480;800;1200&format=webp&as=srcset"
+import portraitImg from "@/assets/portrait.jpg?w=800&format=webp"
 import { Image } from "../features/image-hero"
 
 export function AboutSection() {
@@ -11,11 +12,12 @@ export function AboutSection() {
       <div className="grain-overlay">
         <Image
           src={portraitImg}
+          srcSet={portraitSrcSet}
+          sizes="(min-width: 768px) 540px, 100vw"
           alt={m.about_portrait_alt()}
-          width={1920}
-          height={1080}
+          width={800}
+          height={1000}
           priority
-          sizes="100vw"
           className="w-full border border-gold/20 object-cover"
         />
       </div>
