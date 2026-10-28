@@ -22,7 +22,6 @@ const { ProcessTimeline, toTimecode, buildBars, REST } = await import(
   "#/shared/features/process-timeline"
 )
 
-// ---------- mocks de ambiente ----------
 let ioCallback: IntersectionObserverCallback | null = null
 const mockDisconnect = mock(() => {})
 
