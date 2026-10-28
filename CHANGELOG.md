@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/Victor-Zarzar/my-portfolio-video-editor/compare/v1.0.0...v1.0.1) (2026-10-28)
+
+
+### Bug Fixes
+
+* remake seo.ts and integrate canonical URL. ([07109d5](https://github.com/Victor-Zarzar/my-portfolio-video-editor/commit/07109d5dc6e6b3c0ade4873dabf0bf1c0c699753))
+* remake seo.ts and integrate canonical URL. ([7828ad7](https://github.com/Victor-Zarzar/my-portfolio-video-editor/commit/7828ad72b935698f50d3b5b1fe9ce2df336783dc))
+
 ## 1.0.0 (2026-10-23)
 
 
