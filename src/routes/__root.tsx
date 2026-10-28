@@ -20,6 +20,7 @@ import {
 import { DevToolsGuard } from "#/shared/guard/dev-tools-guard"
 import { GA_MEASUREMENT_ID } from "#/shared/lib/analytics.js"
 import { reportAppError } from "#/shared/lib/error-reporting.js"
+import { buildLocaleLinks } from "#/shared/lib/seo"
 import { Toaster } from "#/shared/ui/sonner"
 import { getLocale } from "../paraglide/runtime.js"
 import appCss from "../styles.css?url"
@@ -94,8 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     },
     head: ({ matches, loaderData }) => {
       const pathname = matches[matches.length - 1]?.pathname ?? "/"
-      const canonical =
-        pathname === "/" ? SITE_URL || "/" : `${SITE_URL}${pathname}`
+      const { canonical, alternates } = buildLocaleLinks(pathname, getLocale())
       const ogImage = `${SITE_URL}${SEO_CONFIG.images.ogImage}`
       const gaConsented = loaderData?.cookieConsent === "accepted"
 
@@ -113,7 +113,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           { property: "og:description", content: m.seo_description() },
           { property: "og:image", content: ogImage },
           { property: "og:type", content: "website" },
-          ...(SITE_URL ? [{ property: "og:url", content: canonical }] : []),
+          { property: "og:url", content: canonical },
+          { property: "og:locale", content: getLocale() },
 
           // Twitter Card
           { name: "twitter:card", content: "summary_large_image" },
@@ -125,7 +126,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             : []),
         ],
         links: [
-          ...(SITE_URL ? [{ rel: "canonical", href: canonical }] : []),
+          { rel: "canonical", href: canonical },
+          ...alternates,
           { rel: "preconnect", href: "https://fonts.googleapis.com" },
           {
             rel: "preconnect",

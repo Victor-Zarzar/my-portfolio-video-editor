@@ -7,7 +7,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-[auto_1fr] md:items-center"
+      className="mx-auto grid max-w-6xl gap-12 px-6 py-28 md:grid-cols-[auto_1fr] md:items-center"
     >
       <div className="grain-overlay mx-auto size-64 overflow-hidden rounded-full border border-gold/20 md:size-80">
         <Image
