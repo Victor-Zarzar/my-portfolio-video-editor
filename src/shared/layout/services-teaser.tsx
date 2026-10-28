@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router"
 import { m } from "#/paraglide/messages"
+import { ProcessTimeline } from "../features/process-timeline"
 
 const highlightKeys = [
   {
@@ -42,6 +43,8 @@ export function ServicesTeaser() {
             </div>
           ))}
         </div>
+
+        <ProcessTimeline />
 
         <div className="mt-10 text-center">
           <Link

@@ -356,7 +356,7 @@
 
     "@netlify/binary-info": ["@netlify/binary-info@1.0.0", "", {}, "sha512-4wMPu9iN3/HL97QblBsBay3E1etIciR84izI3U+4iALY+JHCrI+a2jO0qbAZ/nxKoegypYEaiiqWXylm+/zfrw=="],
 
-    "@netlify/blobs": ["@netlify/blobs@11.1.6", "", { "dependencies": { "@netlify/dev-utils": "6.0.4", "@netlify/otel": "^7.0.6", "@netlify/runtime-utils": "3.0.0" } }, "sha512-7CKpZs4WbMqMvHRxXpQw395X4YBw9keGy3yDr7+pXjAgHlDO7kdYv3chkBYRc78K6delj7Mrmn2NB1HK2E5DxQ=="],
+    "@netlify/blobs": ["@netlify/blobs@11.1.7", "", { "dependencies": { "@netlify/dev-utils": "6.0.4", "@netlify/otel": "^7.0.6", "@netlify/runtime-utils": "3.0.0" } }, "sha512-iOOQSC990P5JtvBGfPMngRxId9H7FWJWAZrzGyYWanCreYElkU5VjoTBt0DgJE859ukNGHAwULZlOdiYHESHfA=="],
 
     "@netlify/cache": ["@netlify/cache@4.1.0", "", { "dependencies": { "@netlify/runtime-utils": "3.0.0" } }, "sha512-s57+0PvMqYHQH90cQDad+KMu0n7CQSL7ZNwggLOD7n7bW5Ywq0nD28X9NNu3DRy0Pv/hiVXKqa4Hht7QWx+sFw=="],
 
@@ -364,7 +364,7 @@
 
     "@netlify/database-dev": ["@netlify/database-dev@1.0.1", "", { "dependencies": { "@electric-sql/pglite": "^0.3.15", "pg-gateway": "0.3.0-beta.4" } }, "sha512-Zu8cM4AeXNuQI/cNAI6vrammtdDnWIGO6PYKDAECDMzsb3IcoTsVOZAePup7cGdjaGcBBVdi1qx/PoI5hNZcxg=="],
 
-    "@netlify/dev": ["@netlify/dev@5.1.11", "", { "dependencies": { "@netlify/ai": "^1.0.2", "@netlify/blobs": "11.1.6", "@netlify/config": "^25.3.0", "@netlify/database-dev": "1.0.1", "@netlify/dev-utils": "6.0.4", "@netlify/edge-functions-dev": "2.0.5", "@netlify/functions-dev": "2.0.13", "@netlify/headers": "3.0.4", "@netlify/images": "2.0.5", "@netlify/redirects": "4.1.1", "@netlify/runtime": "5.0.10", "@netlify/server-dev": "0.1.5", "@netlify/static": "4.0.0", "ulid": "^3.0.0" } }, "sha512-gZR9NjNNmLMrW8hf7erVnNIJ8V+ysXhspuvNVaT1cgoRS9TagWLUUPvCwRiNAZWFa7k0EjEaVqY65E2EvgfHfg=="],
+    "@netlify/dev": ["@netlify/dev@5.1.12", "", { "dependencies": { "@netlify/ai": "^1.0.2", "@netlify/blobs": "11.1.7", "@netlify/config": "^25.3.0", "@netlify/database-dev": "1.0.1", "@netlify/dev-utils": "6.0.4", "@netlify/edge-functions-dev": "2.0.5", "@netlify/functions-dev": "2.0.14", "@netlify/headers": "3.0.4", "@netlify/images": "2.0.5", "@netlify/redirects": "4.1.1", "@netlify/runtime": "5.0.11", "@netlify/server-dev": "0.1.5", "@netlify/static": "4.0.0", "ulid": "^3.0.0" } }, "sha512-GqxnEsexTkjQ+lmQBwikTEk+OQZjzP1zFhStKhOu7JuTSAckf/CltZB4c/8B6MZ6IZGZ1VHDXtIRGkNZHv+5bA=="],
 
     "@netlify/dev-utils": ["@netlify/dev-utils@6.0.4", "", { "dependencies": { "@whatwg-node/server": "^0.11.0", "ansis": "^4.1.0", "atomically": "^2.0.3", "chokidar": "^5.0.0", "decache": "^4.6.2", "dettle": "^1.0.5", "dot-prop": "9.0.0", "empathic": "^2.0.0", "env-paths": "^3.0.0", "parse-gitignore": "^2.0.0", "semver": "^7.7.2" } }, "sha512-VZgq2gqRLQual8P2v6B8/W1WgUNYJvVvgqCIbviPR/BcI6hKvxVBdAMjz+84eU3qpfMau1Bn2J70JDSQSNkNgg=="],
 
@@ -378,7 +378,7 @@
 
     "@netlify/functions": ["@netlify/functions@6.0.3", "", { "dependencies": { "@netlify/types": "3.3.0" } }, "sha512-6KHpsR2L4VQL2gMm3VvG46xBNTga/SbOziluInR0++gkvOuQ/T2pxsxf2Rys5wOikpNY3Zv1IoE52/pWBJjZ9Q=="],
 
-    "@netlify/functions-dev": ["@netlify/functions-dev@2.0.13", "", { "dependencies": { "@netlify/blobs": "11.1.6", "@netlify/dev-utils": "6.0.4", "@netlify/functions": "6.0.3", "@netlify/zip-it-and-ship-it": "^16.4.1", "cron-parser": "^5.0.0", "decache": "^4.6.2", "is-stream": "^4.0.1", "jwt-decode": "^4.0.0", "lambda-local": "^2.2.0", "read-package-up": "^12.0.0", "semver": "^7.6.3", "source-map-support": "^0.5.21", "yauzl": "^3.4.0" } }, "sha512-9fGLxnOPMu8pN17gp0qcZVNc16C+zneQZV0BS28dLSbdQgQQSDuGRLo5iz95QNdotBgToB7DQo9qCQ6RBNOdrA=="],
+    "@netlify/functions-dev": ["@netlify/functions-dev@2.0.14", "", { "dependencies": { "@netlify/blobs": "11.1.7", "@netlify/dev-utils": "6.0.4", "@netlify/functions": "6.0.3", "@netlify/zip-it-and-ship-it": "^16.4.1", "cron-parser": "^5.0.0", "decache": "^4.6.2", "is-stream": "^4.0.1", "jwt-decode": "^4.0.0", "lambda-local": "^2.2.0", "read-package-up": "^12.0.0", "semver": "^7.6.3", "source-map-support": "^0.5.21", "yauzl": "^3.4.0" } }, "sha512-Yy4gmEmMrq56MvPac3Gw7kIXep+TKKz2UUFO7UQBtxBrVHVd5b90+UXbmOUlfUtk1GAKNruXoVfzEZpu3PBHqw=="],
 
     "@netlify/headers": ["@netlify/headers@3.0.4", "", { "dependencies": { "@netlify/headers-parser": "^10.1.1" } }, "sha512-ddw5op/6n3MZ2aWV3lzy+bubUM9I/LvjvxMcwKMnRUudHpgAvb0cepUOluY+Uabu/0td2RNvQfpKrFPUKwo0Yw=="],
 
@@ -396,7 +396,7 @@
 
     "@netlify/redirects": ["@netlify/redirects@4.1.1", "", { "dependencies": { "@netlify/dev-utils": "6.0.4", "@netlify/redirect-matcher": "^0.4.2", "@netlify/redirect-parser": "^16.1.1", "cookie": "^2.0.0", "jsonwebtoken": "9.0.3" } }, "sha512-t7tPny+5ovPC7PyKGnMZYgM7iuGQ7rgwzJKbZUiVlTnQwjVPdnCtF+5p54mDiwBIouK4ppe56n3sYfsECkJLBw=="],
 
-    "@netlify/runtime": ["@netlify/runtime@5.0.10", "", { "dependencies": { "@netlify/blobs": "^11.1.6", "@netlify/cache": "4.1.0", "@netlify/runtime-utils": "3.0.0", "@netlify/types": "3.3.0" } }, "sha512-jOr25QmBFRaszlkb5Yk7rQyXTZYdBk18EEWJC1FqDOfGyhKZ0FptKSC6CvZNd+iadz8jbImyNX/e8wM8KvHWjg=="],
+    "@netlify/runtime": ["@netlify/runtime@5.0.11", "", { "dependencies": { "@netlify/blobs": "^11.1.7", "@netlify/cache": "4.1.0", "@netlify/runtime-utils": "3.0.0", "@netlify/types": "3.3.0" } }, "sha512-TWTXESKb6HAqGZFZ+oHXzc5EFW0z3XJffgeTuu4A5PjDag/REnia9Q4ITgywDbjhxHFeFFZHPN0FDT1uwO8cdQ=="],
 
     "@netlify/runtime-utils": ["@netlify/runtime-utils@3.0.0", "", {}, "sha512-OHo40+V3QZkR+UrDjqhN+LekrAby/dSSJxsvyYs9i88E/mSl3goB/ysoL+VYROm190egxmQyRYlHK7vL4GeHBQ=="],
 
@@ -2032,7 +2032,7 @@
 
     "@tailwindcss/oxide-wasm32-wasi/tslib": ["tslib@2.8.1", "", { "bundled": true }, "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="],
 
-    "@tanstack/router-plugin/unplugin": ["unplugin@3.5.0", "", { "dependencies": { "@jridgewell/remapping": "^2.3.5", "picomatch": "^4.0.7", "webpack-virtual-modules": "^0.6.2" }, "peerDependencies": { "@farmfe/core": "*", "@rsbuild/core": "*", "@rspack/core": "*", "bun-types-no-globals": "*", "esbuild": "*", "rolldown": "*", "rollup": "*", "unloader": "*", "vite": "*", "webpack": "*" }, "optionalPeers": ["@farmfe/core", "@rsbuild/core", "@rspack/core", "bun-types-no-globals", "esbuild", "rolldown", "rollup", "unloader", "vite", "webpack"] }, "sha512-s9qc6Y8ChhQE9RZ9Se+znEtZA0oK31LmEBO9y97ixR3ErA8UwlzA4XNybg/41od8rQ8EKScVQM857NWnI+EWkQ=="],
+    "@tanstack/router-plugin/unplugin": ["unplugin@3.6.0", "", { "dependencies": { "@jridgewell/remapping": "^2.3.5", "picomatch": "^4.0.7", "webpack-virtual-modules": "^0.6.2" }, "peerDependencies": { "@farmfe/core": "*", "@rsbuild/core": "*", "@rspack/core": "*", "bun-types-no-globals": "*", "esbuild": "*", "rolldown": "*", "rollup": "*", "unloader": "*", "vite": "*", "webpack": "*" }, "optionalPeers": ["@farmfe/core", "@rsbuild/core", "@rspack/core", "bun-types-no-globals", "esbuild", "rolldown", "rollup", "unloader", "vite", "webpack"] }, "sha512-btGFb33KNAaqsu3/jFenhevLmaP9ZjYbkiVKd7OBAtsbdqG7oSJsA8RlHa7NY5kt765PnB37mlAI8a15iQAm+w=="],
 
     "@tanstack/router-utils/diff": ["diff@9.0.0", "", {}, "sha512-svtcdpS8CgJyqAjEQIXdb3OjhFVVYjzGAPO8WGCmRbrml64SPw/jJD4GoE98aR7r25A0XcgrK3F02yw9R/vhQw=="],
 
