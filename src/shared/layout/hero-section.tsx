@@ -1,13 +1,14 @@
 import { Link } from "@tanstack/react-router"
 import { m } from "#/paraglide/messages"
 import heroImg from "@/assets/hero.jpg"
+import Timecode from "../common/time-code"
 import { Image } from "../features/image-hero"
 
 export function HeroSection() {
   return (
     <section
       data-testid="hero"
-      className="relative grain-overlay flex min-h-screen items-end overflow-hidden"
+      className="letterbox relative flex min-h-[calc(100svh-4.5rem)] w-full items-end overflow-hidden"
     >
       <Image
         src={heroImg}
@@ -16,10 +17,19 @@ export function HeroSection() {
         height={1088}
         priority
         sizes="100vw"
-        className="absolute inset-0 h-full w-full object-cover opacity-70"
+        className="flicker absolute inset-0 h-full w-full object-cover opacity-70"
       />
       <div className="absolute inset-0 bg-linear-to-t from-background via-background/60 to-background/30" />
-      <div className="relative mx-auto w-full max-w-6xl px-6 pb-20 pt-32">
+      <div
+        aria-hidden
+        className="viewfinder pointer-events-none absolute inset-0 z-10"
+      />
+      <div className="absolute inset-x-0 top-24 z-10">
+        <div className="mx-auto flex w-full max-w-6xl justify-end px-6">
+          <Timecode />
+        </div>
+      </div>
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-32">
         <p className="eyebrow">{m.hero_eyebrow()}</p>
         <h1 className="mt-6 max-w-4xl text-5xl leading-[0.95] font-extrabold sm:text-7xl md:text-8xl">
           {m.hero_title1()}
@@ -41,6 +51,12 @@ export function HeroSection() {
           </span>
         </div>
       </div>
+      <p
+        aria-hidden
+        className="eyebrow absolute bottom-14 left-1/2 z-10 hidden -translate-x-1/2 opacity-60 md:block"
+      >
+        {m.hero_p()}
+      </p>
     </section>
   )
 }
