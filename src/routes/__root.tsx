@@ -43,16 +43,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           { name: "description", content: m.seo_description() },
           { name: "author", content: SITE_NAME },
           { name: "robots", content: SEO_CONFIG.robots.meta },
-
-          // Open Graph
           { property: "og:title", content: m.seo_title() },
           { property: "og:description", content: m.seo_description() },
           { property: "og:image", content: ogImage },
           { property: "og:type", content: "website" },
           { property: "og:url", content: canonical },
           { property: "og:locale", content: getLocale() },
-
-          // Twitter Card
           { name: "twitter:card", content: "summary_large_image" },
           { name: "twitter:title", content: m.seo_title() },
           { name: "twitter:description", content: m.seo_description() },

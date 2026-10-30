@@ -7,6 +7,7 @@ import work3Set from "@/assets/work-3.jpg?w=400;800;1120&format=webp&as=srcset"
 import work3 from "@/assets/work-3.jpg?w=800&format=webp"
 import work4Set from "@/assets/work-4.jpg?w=400;800;1120&format=webp&as=srcset"
 import work4 from "@/assets/work-4.jpg?w=800&format=webp"
+import type { Work } from "../types/works/works"
 
 const items = [
   {
@@ -41,9 +42,19 @@ const items = [
     title: () => m.works_item_4_title(),
     kind: () => m.works_item_4_kind(),
   },
+  {
+    id: "work-5",
+    src: work1,
+    srcSet: work1Set,
+    year: "2026",
+    title: () => m.works_item_1_title(),
+    kind: () => m.works_item_1_kind(),
+    // quando o vídeo real ficar pronto:
+    // preview: { mp4: "/media/vinyl.mp4", webm: "/media/work-1-preview.webm" },
+  },
 ]
 
-export function getWorks() {
+export function getWorks(): Work[] {
   return items.map(({ title, kind, ...rest }) => ({
     ...rest,
     title: title(),
