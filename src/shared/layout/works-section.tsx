@@ -1,9 +1,13 @@
+import { useState } from "react"
 import { m } from "#/paraglide/messages"
 import { getWorks } from "#/shared/data/works-data"
 import { Image } from "../features/image-hero"
+import { WorkDialog } from "../features/works-dialog"
+import type { Work } from "../types/works/works"
 
 export function WorksSection() {
   const works = getWorks()
+  const [selected, setSelected] = useState<Work | null>(null)
 
   return (
     <section
@@ -25,32 +29,44 @@ export function WorksSection() {
         {works.map((w, i) => (
           <article
             key={w.id}
+            id={w.id}
             className="frame-card group overflow-hidden"
           >
-            <div className="grain-overlay overflow-hidden">
-              <Image
-                src={w.src}
-                srcSet={w.srcSet}
-                sizes="(min-width: 1152px) 540px, (min-width: 640px) 50vw, 100vw"
-                alt={`${m.works_frame_alt()} ${w.title}`}
-                width={1024}
-                height={768}
-                priority={i < 2}
-                className="aspect-4/3 w-full object-cover opacity-85 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
-              />
-            </div>
-            <div className="flex items-baseline justify-between gap-4 px-6 py-5">
-              <div>
-                <h3 className="text-xl font-bold">{w.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{w.kind}</p>
+            <button
+              type="button"
+              onClick={() => setSelected(w)}
+              aria-label={`${m.works_dialog_open()} ${w.title}`}
+              className="block w-full cursor-pointer text-left"
+            >
+              <div className="grain-overlay overflow-hidden">
+                <Image
+                  src={w.src}
+                  srcSet={w.srcSet}
+                  sizes="(min-width: 1152px) 540px, (min-width: 640px) 50vw, 100vw"
+                  alt={`${m.works_frame_alt()} ${w.title}`}
+                  width={1024}
+                  height={768}
+                  priority={i < 2}
+                  className="aspect-4/3 w-full object-cover opacity-85 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
+                />
               </div>
-              <span className="text-xs tracking-[0.18em] text-gold">
-                {w.year}
-              </span>
-            </div>
+              <div className="flex items-baseline justify-between gap-4 px-6 py-5">
+                <div>
+                  <h3 className="text-xl font-bold">{w.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{w.kind}</p>
+                </div>
+                <span className="text-xs tracking-[0.18em] text-gold">
+                  {w.year}
+                </span>
+              </div>
+            </button>
           </article>
         ))}
       </div>
+      <WorkDialog
+        work={selected}
+        onClose={() => setSelected(null)}
+      />
     </section>
   )
 }
