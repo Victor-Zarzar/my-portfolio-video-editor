@@ -1,6 +1,8 @@
 import { expect, type Page, test } from "@playwright/test"
 
-const workDialog = (page: Page) => page.locator("dialog")
+const workDialog = (page: Page) => page.locator('[data-slot="dialog-content"]')
+const dialogTitle = (dialog: ReturnType<typeof workDialog>) =>
+  dialog.locator('[data-slot="dialog-title"]')
 
 async function openFirstWork(page: Page) {
   await page.goto("/en/works")
@@ -16,8 +18,8 @@ test.describe("Works dialog", () => {
   test("should open the dialog when clicking a work card", async ({ page }) => {
     const dialog = await openFirstWork(page)
 
-    await expect(dialog.getByRole("heading", { level: 3 })).toBeVisible()
-    await expect(dialog.locator("iframe, img").first()).toBeVisible()
+    await expect(dialogTitle(dialog)).toBeVisible()
+    await expect(dialog.locator("img").first()).toBeVisible()
   })
 
   test("should show the same title as the clicked card", async ({ page }) => {
@@ -29,7 +31,7 @@ test.describe("Works dialog", () => {
     await card.getByRole("button").click()
 
     const dialog = workDialog(page)
-    await expect(dialog.getByRole("heading", { level: 3 })).toHaveText(title)
+    await expect(dialogTitle(dialog)).toHaveText(title)
   })
 
   test("should close the dialog with the close button", async ({ page }) => {
@@ -60,7 +62,7 @@ test.describe("Works dialog", () => {
   }) => {
     const dialog = await openFirstWork(page)
 
-    await dialog.getByRole("heading", { level: 3 }).click()
+    await dialogTitle(dialog).click()
     await expect(dialog).toBeVisible()
   })
 
@@ -70,7 +72,7 @@ test.describe("Works dialog", () => {
     await expect(dialog).toBeHidden()
 
     await page.locator("#works article").first().getByRole("button").click()
-    await expect(dialog).toBeVisible()
+    await expect(workDialog(page)).toBeVisible()
   })
 
   test("should use the native share sheet when available", async ({ page }) => {
