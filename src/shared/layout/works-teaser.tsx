@@ -1,40 +1,35 @@
 import { Link } from "@tanstack/react-router"
-import { type PointerEvent, useEffect, useRef, useState } from "react"
+import { type PointerEvent, useState } from "react"
 import { m } from "#/paraglide/messages"
 import { getWorks } from "#/shared/data/works-data"
 import { Image } from "../features/image-hero"
 import { LoopVideo } from "../features/loop-video"
+import { getEmbedSrc, parseVideoUrl } from "../lib/video-embed"
 import type { Work } from "../types/works/works"
 
 const FEATURED_COUNT = 2
 
 function WorkCard({ work }: { work: Work }) {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [loaded, setLoaded] = useState(false)
   const [hovering, setHovering] = useState(false)
-  const { preview } = work
+  const [ready, setReady] = useState(false)
 
-  useEffect(() => {
-    const v = videoRef.current
-    if (!v) return
-    if (hovering) {
-      v.play().catch(() => {})
-    } else {
-      v.pause()
-      v.currentTime = 0
-    }
-  }, [hovering, loaded])
+  const video = work.videoUrl ? parseVideoUrl(work.videoUrl) : null
+  const previewSrc = video ? getEmbedSrc(video, "preview") : null
 
   const handleEnter = (e: PointerEvent<HTMLDivElement>) => {
-    if (!preview || e.pointerType !== "mouse") return
-    setLoaded(true)
+    if (!previewSrc || e.pointerType !== "mouse") return
     setHovering(true)
+  }
+
+  const handleLeave = () => {
+    setHovering(false)
+    setReady(false)
   }
 
   return (
     <div
       onPointerEnter={handleEnter}
-      onPointerLeave={() => setHovering(false)}
+      onPointerLeave={handleLeave}
       className="group relative aspect-video overflow-hidden border border-border/60"
     >
       <Image
@@ -47,27 +42,18 @@ function WorkCard({ work }: { work: Work }) {
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
 
-      {preview && loaded && (
-        <video
-          ref={videoRef}
-          muted
-          loop
-          playsInline
-          preload="auto"
+      {previewSrc && hovering && (
+        <iframe
+          src={previewSrc}
+          title={`${work.title} preview`}
           aria-hidden
-          className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        >
-          {preview.webm && (
-            <source
-              src={preview.webm}
-              type="video/webm"
-            />
-          )}
-          <source
-            src={preview.mp4}
-            type="video/mp4"
-          />
-        </video>
+          tabIndex={-1}
+          allow="autoplay"
+          onLoad={() => setReady(true)}
+          className={`pointer-events-none absolute inset-0 h-full w-full border-0 transition-opacity duration-300 ${
+            ready ? "opacity-100" : "opacity-0"
+          }`}
+        />
       )}
 
       <div className="absolute inset-0 flex flex-col justify-end bg-black/40 p-4 opacity-0 transition-opacity group-hover:opacity-100">
@@ -89,7 +75,7 @@ function ReelsBand() {
         mp4="/media/vinyl.mp4"
         webm="/media/vinyl.webm"
         poster="/media/vinyl-poster.jpg"
-        className="absolute inset-0 h-full w-full object-cover opacity-80"
+        className="absolute inset-0 h-full w-full object-cover object-[50%_30%] opacity-80"
       />
       <div className="absolute inset-0 bg-background/50" />
       <div className="relative flex flex-col items-center gap-4 px-6 text-center">

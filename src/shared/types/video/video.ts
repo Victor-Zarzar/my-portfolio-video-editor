@@ -4,3 +4,12 @@ export type LoopVideoProps = {
   poster: string
   className?: string
 }
+
+export type Provider = "youtube" | "vimeo" | "instagram"
+
+export type ParsedVideo = {
+  provider: Provider
+  id: string
+  hash?: string
+  kind?: string
+}

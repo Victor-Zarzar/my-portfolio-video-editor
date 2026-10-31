@@ -11,6 +11,7 @@ export type WorkItem = {
   credits?: WorkCredit[]
   preview?: { mp4: string; webm?: string }
   embedUrl?: string
+  videoUrl?: string
 }
 
 export type Work = Omit<WorkItem, "title" | "kind" | "description"> & {

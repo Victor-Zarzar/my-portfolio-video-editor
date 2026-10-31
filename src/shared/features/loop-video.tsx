@@ -24,6 +24,7 @@ export function LoopVideo({ mp4, webm, poster, className }: LoopVideoProps) {
   return (
     <video
       ref={ref}
+      data-testid="loop-video"
       poster={poster}
       muted
       loop

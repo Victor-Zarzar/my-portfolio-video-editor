@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { m } from "#/paraglide/messages"
+import { getEmbedSrc, parseVideoUrl } from "../lib/video-embed"
 import type { Work } from "../types/works/works"
 
 type Props = { work: Work | null; onClose: () => void }
@@ -7,6 +8,9 @@ type Props = { work: Work | null; onClose: () => void }
 export function WorkDialog({ work, onClose }: Props) {
   const ref = useRef<HTMLDialogElement>(null)
   const [copied, setCopied] = useState(false)
+  const video = work?.videoUrl ? parseVideoUrl(work.videoUrl) : null
+  const fullSrc = video ? getEmbedSrc(video, "full") : null
+  const isInstagram = video?.provider === "instagram"
 
   useEffect(() => {
     const d = ref.current
@@ -36,14 +40,16 @@ export function WorkDialog({ work, onClose }: Props) {
     >
       {work && (
         <div className="grid gap-0 md:grid-cols-[1.6fr_1fr]">
-          <div className="aspect-video bg-black">
-            {work.embedUrl ? (
+          <div
+            className={`bg-black ${isInstagram ? "aspect-4/5" : "aspect-video"}`}
+          >
+            {fullSrc ? (
               <iframe
-                src={work.embedUrl}
+                src={fullSrc}
                 title={work.title}
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
-                className="h-full w-full"
+                className="h-full w-full border-0"
               />
             ) : (
               <img
