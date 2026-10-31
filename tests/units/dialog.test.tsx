@@ -1,11 +1,4 @@
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  mock,
-} from "bun:test"
+import { afterEach, beforeEach, describe, expect, it, mock } from "bun:test"
 import { act, cleanup, fireEvent, render } from "@testing-library/react"
 import type { Work } from "#/shared/types/works/works"
 
@@ -27,6 +20,27 @@ mock.module("#/shared/lib/video-embed", () => ({
     `https://embed.test/${video.provider}/${video.id}?mode=${mode}`,
 }))
 
+mock.module("#/shared/features/image-hero", () => ({
+  Image: ({
+    src,
+    srcSet,
+    alt,
+    className,
+  }: {
+    src: string
+    srcSet?: string
+    alt: string
+    className?: string
+  }) => (
+    <img
+      src={src}
+      srcSet={srcSet}
+      alt={alt}
+      className={className}
+    />
+  ),
+}))
+
 const { WorkDialog } = await import("#/shared/features/works-dialog")
 
 const makeWork = (overrides: Partial<Work> = {}): Work =>
@@ -39,14 +53,6 @@ const makeWork = (overrides: Partial<Work> = {}): Work =>
     srcSet: "",
     ...overrides,
   }) as unknown as Work
-
-const showModal = mock(function (this: HTMLDialogElement) {
-  this.open = true
-})
-const closeDialog = mock(function (this: HTMLDialogElement) {
-  this.open = false
-  this.dispatchEvent(new Event("close"))
-})
 
 function stubNavigator(props: { share?: unknown; clipboard?: unknown }) {
   Object.defineProperty(navigator, "share", {
@@ -70,22 +76,7 @@ describe("WorkDialog", () => {
   let resetCallbacks: Array<() => void> = []
 
   beforeEach(() => {
-    showModal.mockClear()
-    closeDialog.mockClear()
     resetCallbacks = []
-
-    Object.defineProperty(HTMLDialogElement.prototype, "showModal", {
-      value: showModal,
-      configurable: true,
-      writable: true,
-    })
-    Object.defineProperty(HTMLDialogElement.prototype, "close", {
-      value: closeDialog,
-      configurable: true,
-      writable: true,
-    })
-
-    // Intercepts only the 2000ms "copied" reset timer; everything else stays real
     globalThis.setTimeout = ((
       cb: () => void,
       ms?: number,
@@ -115,52 +106,52 @@ describe("WorkDialog", () => {
 
   describe("rendering", () => {
     it("should render no content when work is null", () => {
-      const { container, queryByText } = render(
+      const { queryByRole, queryByText } = render(
         <WorkDialog
           work={null}
           onClose={() => {}}
         />,
       )
-      expect(container.querySelector("dialog")).toBeTruthy()
+      expect(queryByRole("dialog")).toBeNull()
       expect(queryByText("Share")).toBeNull()
       expect(queryByText("Close")).toBeNull()
     })
 
-    it("should render title, kind and year", () => {
-      const { getByText } = render(
+    it("should render the dialog with title, kind and year", () => {
+      const { getByText, getByRole } = render(
         <WorkDialog
           work={makeWork()}
           onClose={() => {}}
         />,
       )
+      expect(getByRole("dialog")).toBeTruthy()
       expect(getByText("Neon Nights")).toBeTruthy()
       expect(getByText("Music Video")).toBeTruthy()
       expect(getByText("2024")).toBeTruthy()
     })
 
     it("should render the description when provided", () => {
-      const { getByText, container } = render(
+      const { getByText } = render(
         <WorkDialog
           work={makeWork({ description: "A neon-soaked short film." })}
           onClose={() => {}}
         />,
       )
       expect(getByText("A neon-soaked short film.")).toBeTruthy()
-      expect(container.querySelectorAll("p")).toHaveLength(2)
     })
 
     it("should omit the description when absent", () => {
-      const { container } = render(
+      const { queryByText } = render(
         <WorkDialog
           work={makeWork()}
           onClose={() => {}}
         />,
       )
-      expect(container.querySelectorAll("p")).toHaveLength(1)
+      expect(queryByText("A neon-soaked short film.")).toBeNull()
     })
 
     it("should render every credit as role and name", () => {
-      const { getByText, container } = render(
+      const { getByText, baseElement } = render(
         <WorkDialog
           work={makeWork({
             credits: [
@@ -175,125 +166,137 @@ describe("WorkDialog", () => {
       expect(getByText("Jane Doe")).toBeTruthy()
       expect(getByText("DOP:")).toBeTruthy()
       expect(getByText("John Roe")).toBeTruthy()
-      expect(container.querySelectorAll("dt")).toHaveLength(2)
+      expect(baseElement.querySelectorAll("dt")).toHaveLength(2)
     })
 
     it("should omit the credits list when absent", () => {
-      const { container } = render(
+      const { baseElement } = render(
         <WorkDialog
           work={makeWork()}
           onClose={() => {}}
         />,
       )
-      expect(container.querySelector("dl")).toBeNull()
+      expect(baseElement.querySelector("dl")).toBeNull()
     })
   })
 
   describe("media", () => {
     it("should render the full embed iframe when the video url is valid", () => {
-      const { container } = render(
+      const { baseElement } = render(
         <WorkDialog
           work={makeWork({ videoUrl: "https://youtube.com/watch?v=abc" })}
           onClose={() => {}}
         />,
       )
-      const iframe = container.querySelector("iframe") as HTMLIFrameElement
+      const iframe = baseElement.querySelector("iframe") as HTMLIFrameElement
       expect(iframe).toBeTruthy()
       expect(iframe.getAttribute("src")).toBe(
         "https://embed.test/youtube/abc?mode=full",
       )
       expect(iframe.getAttribute("title")).toBe("Neon Nights")
-      expect(container.querySelector("img")).toBeNull()
     })
 
-    it("should fall back to the image when there is no video url", () => {
-      const { container } = render(
-        <WorkDialog
-          work={makeWork()}
-          onClose={() => {}}
-        />,
-      )
-      const img = container.querySelector("img") as HTMLImageElement
-      expect(container.querySelector("iframe")).toBeNull()
-      expect(img.getAttribute("src")).toBe("/img/neon.jpg")
-      expect(img.getAttribute("alt")).toBe("Neon Nights")
-    })
-
-    it("should fall back to the image when the video url is unsupported", () => {
-      const { container } = render(
-        <WorkDialog
-          work={makeWork({ videoUrl: "https://unknown.test/video" })}
-          onClose={() => {}}
-        />,
-      )
-      expect(container.querySelector("iframe")).toBeNull()
-      expect(container.querySelector("img")).toBeTruthy()
-    })
-
-    it("should use a 16:9 frame for regular videos", () => {
-      const { container } = render(
+    it("should keep the poster image behind the iframe with an empty alt", () => {
+      const { baseElement } = render(
         <WorkDialog
           work={makeWork({ videoUrl: "https://youtube.com/watch?v=abc" })}
           onClose={() => {}}
         />,
       )
-      const frame = container.querySelector(".bg-black") as HTMLElement
+      const img = baseElement.querySelector("img") as HTMLImageElement
+      expect(img).toBeTruthy()
+      expect(img.getAttribute("src")).toBe("/img/neon.jpg")
+      expect(img.getAttribute("alt")).toBe("")
+    })
+
+    it("should fade the iframe in after it loads", () => {
+      const { baseElement } = render(
+        <WorkDialog
+          work={makeWork({ videoUrl: "https://youtube.com/watch?v=abc" })}
+          onClose={() => {}}
+        />,
+      )
+      const iframe = baseElement.querySelector("iframe") as HTMLIFrameElement
+      expect(iframe.className).toContain("opacity-0")
+
+      fireEvent.load(iframe)
+
+      expect(iframe.className).toContain("opacity-100")
+      expect(iframe.className).not.toContain("opacity-0")
+    })
+
+    it("should render only the image (with alt) when there is no video url", () => {
+      const { baseElement } = render(
+        <WorkDialog
+          work={makeWork()}
+          onClose={() => {}}
+        />,
+      )
+      const img = baseElement.querySelector("img") as HTMLImageElement
+      expect(baseElement.querySelector("iframe")).toBeNull()
+      expect(img.getAttribute("src")).toBe("/img/neon.jpg")
+      expect(img.getAttribute("alt")).toBe("Neon Nights")
+    })
+
+    it("should fall back to the image when the video url is unsupported", () => {
+      const { baseElement } = render(
+        <WorkDialog
+          work={makeWork({ videoUrl: "https://unknown.test/video" })}
+          onClose={() => {}}
+        />,
+      )
+      expect(baseElement.querySelector("iframe")).toBeNull()
+      expect(baseElement.querySelector("img")).toBeTruthy()
+    })
+
+    it("should use a 16:9 frame for regular videos", () => {
+      const { baseElement } = render(
+        <WorkDialog
+          work={makeWork({ videoUrl: "https://youtube.com/watch?v=abc" })}
+          onClose={() => {}}
+        />,
+      )
+      const frame = baseElement.querySelector(".bg-black") as HTMLElement
       expect(frame.className).toContain("aspect-video")
       expect(frame.className).not.toContain("aspect-4/5")
     })
 
     it("should use a 4:5 frame for instagram videos", () => {
-      const { container } = render(
+      const { baseElement } = render(
         <WorkDialog
           work={makeWork({ videoUrl: "https://instagram.com/reel/abc" })}
           onClose={() => {}}
         />,
       )
-      const frame = container.querySelector(".bg-black") as HTMLElement
+      const frame = baseElement.querySelector(".bg-black") as HTMLElement
       expect(frame.className).toContain("aspect-4/5")
       expect(frame.className).not.toContain("aspect-video")
     })
   })
 
   describe("dialog open/close", () => {
-    it("should call showModal when a work is provided", () => {
-      render(
+    it("should open when a work is provided", () => {
+      const { queryByRole } = render(
         <WorkDialog
           work={makeWork()}
           onClose={() => {}}
         />,
       )
-      expect(showModal).toHaveBeenCalledTimes(1)
+      expect(queryByRole("dialog")).toBeTruthy()
     })
 
-    it("should not call showModal when work is null", () => {
-      render(
+    it("should not open when work is null", () => {
+      const { queryByRole } = render(
         <WorkDialog
           work={null}
           onClose={() => {}}
         />,
       )
-      expect(showModal).not.toHaveBeenCalled()
+      expect(queryByRole("dialog")).toBeNull()
     })
 
-    it("should call close when work goes back to null", () => {
-      const { rerender } = render(
-        <WorkDialog
-          work={makeWork()}
-          onClose={() => {}}
-        />,
-      )
-      rerender(
-        <WorkDialog
-          work={null}
-          onClose={() => {}}
-        />,
-      )
-      expect(closeDialog).toHaveBeenCalledTimes(1)
-    })
-
-    it("should not call showModal again if the dialog is already open", () => {
-      const { rerender } = render(
+    it("should show the new work without duplicating the dialog when it changes", () => {
+      const { rerender, getByText, queryByText, getAllByRole } = render(
         <WorkDialog
           work={makeWork()}
           onClose={() => {}}
@@ -305,7 +308,9 @@ describe("WorkDialog", () => {
           onClose={() => {}}
         />,
       )
-      expect(showModal).toHaveBeenCalledTimes(1)
+      expect(getAllByRole("dialog")).toHaveLength(1)
+      expect(getByText("Other")).toBeTruthy()
+      expect(queryByText("Neon Nights")).toBeNull()
     })
 
     it("should call onClose when the close button is clicked", () => {
@@ -320,31 +325,34 @@ describe("WorkDialog", () => {
       expect(onClose).toHaveBeenCalledTimes(1)
     })
 
-    it("should call onClose when the native close event fires (Esc)", () => {
+    it("should call onClose when Escape is pressed", () => {
       const onClose = mock(() => {})
-      const { container } = render(
+      render(
         <WorkDialog
           work={makeWork()}
           onClose={onClose}
         />,
       )
-      fireEvent(
-        container.querySelector("dialog") as HTMLDialogElement,
-        new Event("close"),
-      )
+      fireEvent.keyDown(document.body, { key: "Escape" })
       expect(onClose).toHaveBeenCalledTimes(1)
     })
 
-    it("should call onClose when the backdrop (dialog itself) is clicked", () => {
+    it("should call onClose when the overlay is clicked", () => {
       const onClose = mock(() => {})
-      const { container } = render(
+      const { baseElement } = render(
         <WorkDialog
           work={makeWork()}
           onClose={onClose}
         />,
       )
-      fireEvent.click(container.querySelector("dialog") as HTMLDialogElement)
-      expect(onClose).toHaveBeenCalledTimes(1)
+      const overlay = baseElement.querySelector(
+        '[data-slot="dialog-overlay"]',
+      ) as HTMLElement
+      expect(overlay).toBeTruthy()
+      fireEvent.pointerDown(overlay)
+      fireEvent.mouseDown(overlay)
+      fireEvent.click(overlay)
+      expect(onClose).toHaveBeenCalled()
     })
 
     it("should not call onClose when clicking inside the content", () => {

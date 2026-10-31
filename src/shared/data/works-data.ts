@@ -22,7 +22,7 @@ const items = [
     title: () => m.works_item_2_title(),
     kind: () => m.works_item_2_kind(),
     videoUrl:
-      "https://www.instagram.com/reel/DfJi7n0KA55/?mdxt=MWh1NmY0cWd1bGh1Mg==",
+      "https://www.instagram.com/reel/DfJz7jnKBB9/?srtk=ODJ6aXBsdTdudWV3",
   },
 ]
 
