@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router"
 import { m } from "#/paraglide/messages"
 import { AboutSection } from "#/shared/layout/about-section"
+import { portrait } from "#/shared/lib/portrait"
 import { pageSeo } from "#/shared/lib/seo"
-import portraitSrcSet from "@/assets/portrait.jpg?w=480;800;1200&format=webp&as=srcset"
-import portraitImg from "@/assets/portrait.jpg?w=800&format=webp"
 
 export const Route = createFileRoute("/_marketing/about")({
   head: () => ({
@@ -15,9 +14,9 @@ export const Route = createFileRoute("/_marketing/about")({
       {
         rel: "preload",
         as: "image",
-        href: portraitImg,
-        imageSrcSet: portraitSrcSet,
-        imageSizes: "(min-width: 768px) 540px, 100vw",
+        href: portrait.src,
+        imageSrcSet: portrait.srcSet,
+        imageSizes: portrait.sizes,
         fetchPriority: "high",
       },
     ],
