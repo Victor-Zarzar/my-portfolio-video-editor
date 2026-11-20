@@ -21,8 +21,7 @@ const items = [
     year: "2026",
     title: () => m.works_item_2_title(),
     kind: () => m.works_item_2_kind(),
-    videoUrl:
-      "https://www.instagram.com/reel/DfJz7jnKBB9/?srtk=ODJ6aXBsdTdudWV3",
+    // videoUrl: "https://www.instagram.com/reel/DfJz7jnKBB9/?srtk=ODJ6aXBsdTdudWV3",
   },
 ]
 

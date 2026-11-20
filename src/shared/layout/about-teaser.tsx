@@ -2,11 +2,11 @@ import { Link } from "@tanstack/react-router"
 import { m } from "#/paraglide/messages"
 
 const software = [
-  "Final Cut Pro",
   "DaVinci Resolve",
-  "VN Editor",
-  "Lightroom",
-  "Frame.io",
+  "Blackmagic Cam",
+  "Final Cut Camera",
+  "LightCraft",
+  "FilmCraft",
   "Luna DAW",
   "Moises AI",
 ]
