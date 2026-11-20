@@ -4,6 +4,7 @@ import { m } from "#/paraglide/messages"
 import { AboutTeaser } from "#/shared/layout/about-teaser"
 import { ContactTeaser } from "#/shared/layout/contact-teaser"
 import { HeroSection } from "#/shared/layout/hero-section"
+import { LutTeaser } from "#/shared/layout/lut-teaser"
 import { ServicesTeaser } from "#/shared/layout/services-teaser"
 import { WorksTeaser } from "#/shared/layout/works-teaser"
 import { pageSeo } from "#/shared/lib/seo"
@@ -64,6 +65,16 @@ function App() {
           viewport={{ once: true, margin: "-60px" }}
         >
           <ServicesTeaser />
+        </motion.div>
+
+        <motion.div
+          custom={2}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
+          <LutTeaser />
         </motion.div>
 
         <motion.div
