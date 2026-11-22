@@ -6,9 +6,30 @@ import type {
   ThemeProviderState,
 } from "#/shared/types/theme/theme"
 
+const SCRIPT_UNSAFE_CHAR_MAP: Record<string, string> = {
+  "<": "\\u003C",
+  ">": "\\u003E",
+  "/": "\\u002F",
+  "\\": "\\\\",
+  "\b": "\\b",
+  "\f": "\\f",
+  "\n": "\\n",
+  "\r": "\\r",
+  "\t": "\\t",
+  "\u2028": "\\u2028",
+  "\u2029": "\\u2029",
+}
+
+function escapeForInlineScript(value: string) {
+  return value.replace(
+    /[<>\/\\\b\f\n\r\t\u2028\u2029]/g,
+    (char) => SCRIPT_UNSAFE_CHAR_MAP[char] ?? char
+  )
+}
+
 function getThemeScript(storageKey: string, defaultTheme: Theme) {
-  const key = JSON.stringify(storageKey)
-  const fallback = JSON.stringify(defaultTheme)
+  const key = escapeForInlineScript(JSON.stringify(storageKey))
+  const fallback = escapeForInlineScript(JSON.stringify(defaultTheme))
   return `(function(){try{var t=localStorage.getItem(${key});if(t!=='light'&&t!=='dark'&&t!=='system'){t=${fallback}}var d=matchMedia('(prefers-color-scheme: dark)').matches;var r=t==='system'?(d?'dark':'light'):t;var e=document.documentElement;e.classList.add(r);e.style.colorScheme=r}catch(e){}})();`
 }
 
